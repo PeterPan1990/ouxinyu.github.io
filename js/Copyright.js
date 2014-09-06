@@ -1,0 +1,1 @@
+﻿document.write("Copyright © 2014-2020, OuXinyu, All Rights Reserved ");
