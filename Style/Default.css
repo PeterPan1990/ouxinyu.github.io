@@ -1,8 +1,11 @@
 ﻿*{font-size:14px;}
 
+a:link , a:visited{ color:#000;text-decoration:none}
+a:hover{ color:blue;}
+
 h1{font-size:18px;}
 
-li{height:20px;line-height:20px;}
+li{line-height:24px;}
 
 #Box {
     width:960px;
