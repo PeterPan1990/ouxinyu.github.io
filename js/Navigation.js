@@ -5,7 +5,7 @@ document.write("<li style=\"display:inline;height:30px;line-height:30px;padding:
 document.write("<li style=\"display:inline;height:30px;line-height:30px;padding:0 10px 0 10px;\"><a href=\"../Publication.html\" style=\"font-size:14px;font-family:Calibri;\">学术论文</a></li>");
 document.write("<li style=\"display:inline;height:30px;line-height:30px;padding:0 10px 0 10px;\"><a href=\"../Project.html\" style=\"font-size:14px;font-family:Calibri;\">科研项目</a></li>");
 document.write("<li style=\"display:inline;height:30px;line-height:30px;padding:0 10px 0 10px;\"><a href=\"../Award.html\" style=\"font-size:14px;font-family:Calibri;\">获奖</a></li>");
-document.write("<li style=\"display:inline;height:30px;line-height:30px;padding:0 10px 0 10px;\"><a href=\"../Miscellaneous.html\" style=\"font-size:14px;font-family:Calibri;\">链接</a></li>");
+document.write("<li style=\"display:inline;height:30px;line-height:30px;padding:0 10px 0 10px;\"><a href=\"../Links.html\" style=\"font-size:14px;font-family:Calibri;\">链接</a></li>");
 document.write("<li style=\"display:inline;height:30px;line-height:30px;padding:0 10px 0 10px;\"><a href=\"../AboutMe.html\" style=\"font-size:14px;font-family:Calibri;\">关于我</a></li>");
 document.write("</ul>");
 document.write("</div>");
