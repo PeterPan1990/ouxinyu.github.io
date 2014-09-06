@@ -3,9 +3,9 @@
 a:link , a:visited{ color:#000;text-decoration:none}
 a:hover{ color:blue;}
 
-h1{font-size:18px;}
+h1{font-size:16px;}
 
-li{line-height:24px;}
+li{line-height:20px;}
 
 #Box {
     width:960px;
