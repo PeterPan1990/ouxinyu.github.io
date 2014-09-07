@@ -8,7 +8,7 @@ h2 {font-weight:bold;color:blue;}
 
 p {text-indent:28px;}
 
-li{line-height:20px;}
+li{line-height:22px;}
 
 #Box {
     width:960px;
@@ -36,8 +36,8 @@ li{line-height:20px;}
 }
 
 .info td{
-    height:16px;
-    line-height:16px;
+    height:18px;
+    line-height:18px;
     padding:5px;
 }
 
