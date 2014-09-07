@@ -6,7 +6,12 @@ a:hover{ color:blue;}
 h1{font-size:16px;}
 h2 {font-size:14px;font-weight:bold;color:black;}
 
-p {text-indent:28px;}
+.navyBold {font-weight:bold;color:navy;}
+.redBold {font-weight:bold;color:red;}
+.red {color:red;}
+.Bold {font-weight:bold;}
+
+p {text-indent:28px;line-height:20px;}
 
 li {line-height:22px;}
 
@@ -17,7 +22,7 @@ li {line-height:22px;}
 }
 
 #Main {
-    width:100%;
+    width:96%;
     padding:20px;
     margin:auto;
 }
