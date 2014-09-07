@@ -1,7 +1,7 @@
 ﻿document.write("<div id=\"Bottom\" style=\"height:40px;line-height:40px;text-align:center;width:100%;border-top:1px solid gray;\">");
 
 document.write("<div id=\"Copyright\" style=\"height:20px;line-height:20px;\">");
-document.write("Copyright © 2014-2020, OuXinyu, All Rights Reserved");
+document.write("Copyright © 2014 - Forever, Xin-Yu Ou, All Rights Reserved");
 document.write("</div>");
 
 document.write("<div id=\"cnzz\" style=\"height:20px;line-height:20px;\">");
