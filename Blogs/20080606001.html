@@ -1,22 +1,34 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Xin-Yu Ou（欧新宇）</title>
-    <link href="../Style/Default.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <div id="Box">
-        <script type="text/javascript"  src="../js/SubBanner.js"></script>
-        <script type="text/javascript"  src="../js/Navigation.js"></script>
+﻿<!DOCTYPE HTML>
+<html>
 
-        <div id="Main" style="font-size:14px;">
-            <div id="Title">各大网站幻灯片Flash广告的ASP.Net/C#版</div>
-            <div id="Content">
-            <p>找来不少代码，都是用js写的，由于我的平台是基于C#的.net开发的，而且又特别想直接去读取SQL数据库来显示Flash图片新闻，所以就自己写了一个.net版的，各位达人看看，有什么地方可以改进的，给点意见，也给各位用.net开发者的一个思路。 </p>
-            <p>下面贴代码了。</p>
-            <h2 style="font-weight:bold;color:blue;">ShowFlashAd.aspx </h2>
-            <pre>
+<head>
+    <title>Xin-Yu Ou（欧新宇）</title>
+    <meta name="description" content="欧新宇老师个人主页，用于自我介绍和为教学、科研服务。" />
+    <meta name="keywords" content="Xin-Yu Ou, xinyu ou, 欧新宇, ouxinyu, shiorioy, 个人主页, 欧老师, 宇宙骑士" />
+    <meta name="author" content="Xin-Yu Ou（欧新宇）" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../style/style.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+        <script type="text/javascript" src="../js/logo_content.js"></script>
+
+
+        <script type="text/javascript" src="../js/menu_content.js"></script>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+        <!-- insert the page content here -->
+        <h1>各大网站幻灯片Flash广告的ASP.Net/C#版</h1>
+          <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
+          <p>找来不少代码，都是用js写的，由于我的平台是基于C#的.net开发的，而且又特别想直接去读取SQL数据库来显示Flash图片新闻，所以就自己写了一个.net版的，各位达人看看，有什么地方可以改进的，给点意见，也给各位用.net开发者的一个思路。 </p>
+          <p>下面贴代码了。</p>
+          <h2 style="font-weight:bold;color:blue;">ShowFlashAd.aspx </h2>
+          <pre>
     &lt;form id="form1" runat="server"&gt;
     &lt;div&gt;
          &lt;object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
@@ -35,10 +47,10 @@
          &lt;/object&gt;                   
      &lt;/div&gt;
      &lt;/form&gt;
-            </pre>     
-            <p>这个主要是用在前台显示Flash的，各位一看就知道了，不过要自己去下载一个loader.swf的文件。</p>
-            <h2 style="font-weight:bold;color:blue;">ShowFlashAd.aspx.cs </h2>
-            <pre>
+            </pre>
+          <p>这个主要是用在前台显示Flash的，各位一看就知道了，不过要自己去下载一个loader.swf的文件。</p>
+          <h2 style="font-weight:bold;color:blue;">ShowFlashAd.aspx.cs </h2>
+          <pre>
 using System; 
 using System.Data; 
 using System.Configuration; 
@@ -89,10 +101,12 @@ public partial class Page_Function_showflashad : System.Web.UI.Page
     } 
 } 
             </pre>
-            <p>这里我只固定显示6幅图，可以自行更改数量，或者修改成动态的也没问题。</p>
-            </div>
-        </div>
-        <script type="text/javascript"  src="../js/Copyright.js"></script>
+          <p>这里我只固定显示6幅图，可以自行更改数量，或者修改成动态的也没问题。</p>
+          <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
     </div>
+    
+    <script type="text/javascript" src="../js/copyright.js"></script>
+
+  </div>
 </body>
-</html> 
+</html>

@@ -1,33 +1,21 @@
-﻿<!DOCTYPE HTML>
-<html>
-
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Xin-Yu Ou（欧新宇）</title>
-    <meta name="description" content="欧新宇老师个人主页，用于自我介绍和为教学、科研服务。" />
-    <meta name="keywords" content="Xin-Yu Ou, xinyu ou, 欧新宇, ouxinyu, shiorioy, 个人主页, 欧老师, 宇宙骑士" />
-    <meta name="author" content="Xin-Yu Ou（欧新宇）" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="../style/style.css" />
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link href="../Style/Default.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
-  <div id="main">
-    <div id="header">
-        <script type="text/javascript" src="../js/logo_content.js"></script>
+    <div id="Box">
+        <script type="text/javascript"  src="../js/SubBanner.js"></script>
+        <script type="text/javascript"  src="../js/Navigation.js"></script>
 
-
-        <script type="text/javascript" src="../js/menu_content.js"></script>
-    </div>
-    <div id="content_header"></div>
-    <div id="site_content">
-        <!-- insert the page content here -->
-        <h1>一个比较好的Asp.net的分页代码，检索速度很快！</h1>
-          <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
-        <p>一个非常快的基于SQL Server和Asp.net的的分页程序，使用的时候，请根据自己的需要修改必要的代码后再使用，这里我就不写怎么改了，相信用.net的人，应该是没问题的，下面的代码都应该看得懂。*^_^*</p>
-        <p>首先，aspx部分 </p>
-        <pre>
+        <div id="Main" style="font-size:14px;">
+            <div id="Title">一个比较好的Asp.net的分页代码，检索速度很快！</div>
+            <div id="Content">
+            <p>一个非常快的基于SQL Server和Asp.net的的分页程序，使用的时候，请根据自己的需要修改必要的代码后再使用，这里我就不写怎么改了，相信用.net的人，应该是没问题的，下面的代码都应该看得懂。*^_^*</p>
+            <p>首先，aspx部分 </p>
+            <pre>
 &lt;asp:GridView ID="gvVisitor" runat="server"&gt; 
      &lt;Columns&gt; 
          &lt;asp:TemplateField HeaderText="序号"&gt; 
@@ -37,6 +25,8 @@
          &lt;%-- 类似的TemplateField,省略--%&gt;...... 
      &lt;/Columns&gt; 
 &lt;/asp:GridView&gt;
+
+
 &lt;%-- 以下为分页所使用的链接，含“记录数”“当前页”“页数”“首页”“上一页”“下一页”“尾页”“页码跳转” --%&gt; 
 &lt;div id="StatisticsPages"&gt; 
     共 &lt;asp:Label ID="lbTotalRecord" runat="server" SkinID="Page"/&gt; 条记录 
@@ -49,9 +39,9 @@
     转至&lt;asp:TextBox ID="tbGotoPage" runat="server" SkinID="Page" MaxLength="5" AutoPostBack="true" /&gt; 页 
 &lt;/div&gt; 
             </pre>
-        <br />
-        <p>.........................................这之后是关键的aspx.cs文件</p>
-        <pre>
+            <br />
+            <p>.........................................这之后是关键的aspx.cs文件</p>
+            <pre>
 const int PageSize = 10;//定义每页显示记录数量 
 int _TotalPage, _TotalRecord, _CurrentPage, _Pages, _JumpPage;
                 //定义几个保存分页参数变量:总页数、总记录数、当前页码、页码数、跳转页码 
@@ -155,6 +145,7 @@ private void Page_OnClick(object sender, CommandEventArgs e)
     ViewState["PageIndex"] = _CurrentPage;//将运算后的CurrentPage变量再次保存至ViewState 
     BindStatisticsData(); 
 } 
+
 private void BindStatisticsData() 
 { 
     _CurrentPage = (int)ViewState["PageIndex"];//从ViewState中读取页码值保存到CurrentPage变量中进行按钮失效运算 
@@ -195,6 +186,7 @@ override protected void OnInit(EventArgs e)
     InitializeComponent(); 
     base.OnInit(e); 
 } 
+
 private void InitializeComponent() 
 { 
     this.lbFirstPage.Command += new CommandEventHandler(this.Page_OnClick); 
@@ -206,11 +198,9 @@ private void InitializeComponent()
 } 
 #endregion 
             </pre>
-          <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
+            </div>
+        </div>
+        <script type="text/javascript"  src="../js/Copyright.js"></script>
     </div>
-    
-    <script type="text/javascript" src="../js/copyright.js"></script>
-
-  </div>
 </body>
-</html>
+</html> 
