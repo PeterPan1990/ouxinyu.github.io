@@ -28,12 +28,12 @@
         <p style="color:red;font-size:16px;font-weight:bold;">特别提醒：强烈建议在配置实用 Caffe 和 Cuda-Convnet 的时候，使用 Linux 操作系统！！！除非你很熟悉 C++ /CUDA 和 Python ，并且可以自行修改和Fix代码中的Bug。</p>
         <p>该指南旨在自我记录，并为需要的同学做一个参考，不是专业严格的技术指南，所以吐槽请绕道。不要再纠结为什么不用Linux了，没玩过Linux的，还要再学Linux那就是折磨，而且没有那么多时间去折腾系统，还是应该把精力花在有用的地方，So....。严格来说，这个不算VS2013下的版本，之前编译的时候，就出现了版本不兼容的问题，如果要完美的运行VS2013应该还需要去重新编译一下各种库文件。这里我是先装了VS2013，而且配置过cuda-convnet在上面，所以不想卸载了，另外又装了一个VS2012，然后就可以在VS2013的属性里使用VS2012的编译和模板。至少界面是VS2013了...，反正硬盘还够。</p>
         <p>PS：顺便说一下，除了“平台工具集”那里稍微调整一下，本指南可以直接用在VS2012下，就不需要装VS2013了</p>
-        <h1>致谢</h1>
+        <h2>致谢</h2>
         <p>1. 感谢UC Berkeley 的大神<a href="http://daggerfs.com/" target="_blank"> @Yangqing Jia </a>，开发并开源了这个让全世界人民都受益的 Caffe</p>
         <p>2. 感谢<a href="https://github.com/niuzhiheng" target="_blank"> @niuzhiheng </a>，同学提供了caffe在windows下的的Visual Studio 2012的工程文件，为我们这些痛恨Linux的小朋友提供了便利</p>
         <p>3. 感谢涂涂同学，ParadiseLost同学，金露同学的耐心指导</p>
         <p>4. 感谢为本文提供各种开源软件，库文件和编译器的各种公司和大神们~ </p>
-        <h1>准备工作：</h1>
+        <h2>准备工作：</h2>
         <p>1.Visual Studio 2013 ，这个东西任何一个学生和老师，都可以用你的edu邮箱去 Microsoft Dreamspark (<a href="https://www.dreamspark.com/" target="_blank">https://www.dreamspark.com/</a>) 网站免费下载正版软件，感觉微软对于科研的贡献居功至伟。（当然为了保护版权，大家仅作为科研使用，就不要传播了）</p>
         <p>2.这里可以推荐大家一个基于Visual Studio的Python IDE：PTVS（Python Tools for Visual Studio） (<a href="http://pytools.codeplex.com/releases" target="_blank"> http://pytools.codeplex.com/releases </a>),支持VS2010，VS2012和VS2013</p>
         <p>3. CUDA 6.5 RC (<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank"> https://developer.nvidia.com/cuda-toolkit </a>)（CUDA的最新版本，因为用的是VS2013所以必须要6.5版本之后的才能支持, 幸运的是nVidia就在上个月刚刚发布，因为是最新版本，所以需要申请为开放人员，大概有1个小时的账号审核周期，耐心等待）。本文的GPU使用的是GTX 770，理论上支持CUDA的GPU应该都可以，但没有测试过。</p>
@@ -43,7 +43,7 @@
         <p>PS: 如果上面两个文件的被墙了，可以移步我的百度云：http://pan.baidu.com/s/1c0EgGj2 （但官网总是会有最新版）</p>
         <p>这个Dependencies包含了大量的.dll, .lib, .h，就是诸如opencv，boost，libopenblas，leveldb等的一个大集合</p>
         <p>5.其中4项的两个文件分别解压放到一个文件夹下，比如：D:\Demo\caffe （合并在一起）</p>
-        <h1>配置 cuda-convnet工程：</h1>
+        <h2>配置 cuda-convnet工程：</h2>
         <p>1. 编辑解决方案源文件“caffe\build\MSVC\MainBuilder.vcxproj"，第 52 行和 344 行。注意此处要根据自己安装的CUDA的信息来进行设置。</p>
         <p class="navy">&lt;Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 6.0.props" /&gt;</p>
         <p class="red">&lt;Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 6.5.props" /&gt;</p>
@@ -57,9 +57,9 @@
         <p>配置类型：应用程序(.exe)</p>
         <img src="20140719001/002.jpg" />
         <p>4. 配置工程的属性，这里Caffe的windows工程作者配置写的比较好，所以基本上不需要做太多的设置，前面操作没有问题，照我的图操作，基本上就没有问题了，细节如下：</p>
-        <p class="Bold">工程 - 属性 - 配置属性 - CUDA C/C++ - Device - Code Generation ：这一项需要根据你的GPU的计算能力来设置，具体可以参考：https://developer.nvidia.com/cuda-gpus </p>
+        <p><strong> 工程 - 属性 - 配置属性 - CUDA C/C++ - Device - Code Generation ：</strong>这一项需要根据你的GPU的计算能力来设置，具体可以参考：https://developer.nvidia.com/cuda-gpus </p>
         <img src="20140719001/003.jpg" />
-        <p class="Bold">工程 - 属性 - 配置属性 - 链接器 - 常规：</p>
+        <p><strong> 工程 - 属性 - 配置属性 - 链接器 - 常规：</strong></p>
         <img src="20140719001/004.jpg" />
         <p>5. 一切设置完，就可以重新生成工程，祈祷上帝，佛祖，耶稣，圣母玛利亚保佑，不报错吧!</p>
         <img src="20140719001/005.jpg" />
