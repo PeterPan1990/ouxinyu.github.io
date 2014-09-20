@@ -70,19 +70,19 @@
         <p>f. 增加 #define cutGetMaxGflopsDeviceId() gpuGetMaxGflopsDeviceId() 到 src/convnet.cu</p>
         <p>PS：对于改进版的cuda-convnet-master工程，a-d已经被做了修改，但避免遗漏可以检查一下。</p>
         <p>5. 配置各种包含，各种引用，如果之前是按照我写的做的，并且软件都是默认安装，那就照做就ok了，内容太多，就直接上图来解释了，细节如下：</p>
-        <p class="Bold">工程 - 属性 - 配置属性 - C/C++ - 常规 - 附加包含项</p>
+        <p><strong>工程 - 属性 - 配置属性 - C/C++ - 常规 - 附加包含项</strong></p>
         <img src="20140717001/003.jpg" />
-        <p class="Bold">工程 - 属性 - 配置属性 - C/C++ - 预处理器 - 预处理器定义：这里很重要的一个步骤是删除默认的“USE_MKL”，否则，程序回去调用这个库，但是它不存在，所以可想而知。</p>
+        <p><strong>工程 - 属性 - 配置属性 - C/C++ - 预处理器 - 预处理器定义：</strong>这里很重要的一个步骤是删除默认的“USE_MKL”，否则，程序回去调用这个库，但是它不存在，所以可想而知。</p>
         <img src="20140717001/004.jpg" />
-        <p class="Bold">工程 - 属性 - 配置属性 - CUDA C/C++ - Common - Additional Include Directories</p>
+        <p><strong>工程 - 属性 - 配置属性 - CUDA C/C++ - Common - Additional Include Directories</strong></p>
         <img src="20140717001/005.jpg" />
-        <p class="Bold">工程 - 属性 - 配置属性 - CUDA C/C++ - Host - Additional Compiler Options ： /wd4819</p>
+        <p><strong>工程 - 属性 - 配置属性 - CUDA C/C++ - Host - Additional Compiler Options ：</strong> /wd4819</p>
         <p>（PS：就是屏蔽一点怪异的警告，不是必须项） </p>
-        <p class="Bold">工程 - 属性 - 配置属性 - CUDA C/C++ - Host - Preprocessor Definitions：和之前一样，删除“USE_MKL”</p>
+        <p><strong>工程 - 属性 - 配置属性 - CUDA C/C++ - Host - Preprocessor Definitions：</strong>和之前一样，删除“USE_MKL”</p>
         <img src="20140717001/006.jpg" />
-        <p class="Bold">工程 - 属性 - 配置属性 - 链接器 - 常规- 附加库目录</p>
+        <p><strong>工程 - 属性 - 配置属性 - 链接器 - 常规- 附加库目录</strong></p>
         <img src="20140717001/007.jpg" />
-        <p class="Bold">工程 - 属性 - 配置属性 - 链接器 - 输入- 附加依赖项 </p>
+        <p><strong>工程 - 属性 - 配置属性 - 链接器 - 输入- 附加依赖项</strong> </p>
         <img src="20140717001/008.jpg" />
         <p>6. 一切设置完，就可以重新生成工程，祈祷上帝，佛祖，耶稣，圣母玛利亚保佑，不报错吧!</p>
         <p>出现这个字样，就可以恭喜你了！！这中间可能会有无数的Warning，直觉上暂时可以忽略，，，</p>

@@ -338,3 +338,16 @@ table tr td
 { background: #F4F4EE;
   color: #47433F;
   border-top: 1px solid #FFF;}
+
+.red {
+    color:red;
+}
+
+.navyBold {
+    color:navy;
+    font-weight:bold;
+}
+
+.Bold {
+    font-weight:bold;
+}
