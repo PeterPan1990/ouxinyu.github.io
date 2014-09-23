@@ -231,13 +231,6 @@
         <p class="navyBold">$ cd examples/mnist</p>
         <p class="navyBold">$ sudo sh ./create_mnist.sh</p>
         <p>生成mnist-train-leveldb/ 和 mnist-test-leveldb/文件夹，这里包含了LDB格式的数据集</p>
-	<p>PS: 这里可能会遇到一个报错信息：</p>
-	<p class="red">Creating lmdb...</p>
-	<p class="red">./create_mnist.sh: 16: ./create_mnist.sh: build/examples/mnist/convert_mnist_data.bin: not found</p>
-	<p>解决方法是，直接到Caffe-master的根目录执行</p>
-	<p class="navyBold">~/caffe-master$ sudo sh examples/mnist/create_mnist.sh</p>
-		
-
         <p>3. 训练mnist</p>
         <p class="navyBold">$ cd examples/mnist</p>
         <p class="navyBold">$ sudo sh ./train_lenet.sh</p>
