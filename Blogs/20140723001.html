@@ -24,16 +24,21 @@
     <div id="site_content">
         <!-- insert the page content here -->
         <h1>Caffe + Ubuntu 14.04 + CUDA 6.5 新手安装配置指南</h1>
-          <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
+        <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
+	<p style="color:red;font-size:14px;"><strong><i>特别说明：本文为作者亲自实验完成，但仅限用于学术交流使用，使用本指南造成的任何不良后果由使用者自行承担，与本博主无关，谢谢！</i></strong></p>
+	<p style="color:blue;">最后更新时间：2014年9月23日，使用当前最新版Caffe-Master完成，特别加入了cuDNN组件。</p>
+
         <p>洋洋洒洒一大篇，就没截图了，这几天一直在折腾这个东西，实在没办法，不想用Linux但是，为了Caffe，只能如此了，安装这些东西，遇到很多问题，每个问题都要折磨很久，大概第一次就是这样的。想想，之后应用，应该还会遇到很多问题吧，不过没办法了，骑虎难下！！这里有个建议是，如果将来要做大数据集，最好事先给Linux留多点空间，比如Imagenet，估计500G都不为过。另外，请阅读完，至少一个部分再进行动手操作，避免多余的工作，写作能力有限，尽请见谅。</p>
         <p>这篇安装指南，适合零基础，新手操作，请高手勿要吐槽！</p>
         <p>简单介绍一下：Caffe，一种Convolutional Neural Network的工具包，和Alex的cuda-convnet功能类似，但各有特点。都是使用C++ CUDA进行底层编辑，Python进行实现，原作不属于Ubuntu 12，也有大神发布了Windows版，但其他相关资料较少，不适合新手使用，所以还是Ubuntu的比较适合新手。（相对而言）</p>
         <p>本文主要包含5个部分，包括：</p>
-        <p>第一部分 Linux安装</p>
-        <p>第二部分 nVidia驱动和CUDA Toolkit的安装和调试</p>
-        <p>第三部分 Caffe的安装和测试</p>
-        <p>第四部分 Python安装和调试</p>
-        <p>第五部分 Matlab安装和调试</p>
+	<ul>
+		<li><strong>第一部分 Linux安装</strong></li>
+		<li><strong>第二部分 nVidia驱动和CUDA Toolkit的安装和调试</strong></li>
+		<li><strong>第三部分 Caffe的安装和测试</strong></li>
+		<li><strong>第四部分 Python安装和调试</strong></li>
+		<li><strong>第五部分 Matlab安装和调试</strong></li>
+	</ul>
         <br />
         <h1 style="color:navy;">第一部分 Linux安装</h1>
         <p>Linux的安装，如果不是Linux粉，只是必须，被迫要用它来作作科研什么的，建议安装成双系统，网上方法很多，这里我就不详细写了，安装还算是傻瓜式的，和windows的过程类似，至于语言，如果觉得难度还不够大的话，完全可以装E文版的，甚至日文，德文~~~，我是装的简体中文版，我总共用分出的100G的空间来安装Ubuntu 14.04，这个版本是最新的版本，有个好处是，可以直接访问Windows8.1的NTFS分区，不用做额外的操作，而且支持中文，例如：$ cd /media/yourname/分区名字/文件夹名，当然GUI就更方便了.</p>
@@ -207,7 +212,14 @@
         <p>1. 切换到Caffe的下载文件夹，然后执行：</p>
         <p class="navyBold">$ cp Makefile.config.example Makefile.config</p>
         <p>修改新生成的Makefile.config文件，修改“BLAS := mkl”，这个非常重要。</p>
-	<p>希望使用nVidia开发的cuDNN来加速Caffe模型运算的同学，确保Makefile.config文件中的USE_CUDNN := 1处于启用状态。幸运的是，新版的Caffe已经默认集成了cuDNN的库文件，不需要自己去安装了。</p>
+	<p>希望使用nVidia开发的cuDNN来加速Caffe模型运算的同学，在安装完cuDNN之后，确保Makefile.config文件中的USE_CUDNN := 1处于启用状态。幸运的是，新版的Caffe已经默认集成了cuDNN的库文件，不需要做额外的设置了。</p>
+	<p class"red"><strong>cuDNN的安装方法如下：</strong></p>
+	<p><a href="http://devblogs.nvidia.com/parallelforall/accelerate-machine-learning-cudnn-deep-neural-network-library/" target="_blank"/>cuDNN Introdution and Download</a></p>
+	<p class="navyBold">$ sudo cp cudnn.h /usr/local/include</p>
+	<p class="navyBold">$ sudo cp libcudnn.so /usr/local/lib</p>
+	<p class="navyBold">$ sudo cp libcudnn.so.6.5 /usr/local/lib</p>
+	<p class="navyBold">$ sudo cp libcudnn.so.6.5.18 /usr/local/lib</p>
+	<p>OK,下面可以编译caffe-master了！！！</p>
         <p class="navyBold">$ make all</p>
         <p class="navyBold">$ make test</p>
         <p class="navyBold">$ make runtest </p>
