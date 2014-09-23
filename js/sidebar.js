@@ -1,7 +1,7 @@
 ﻿document.write("<div class=\"sidebar\">");
 
 document.write("<div style=\"text-align:left;width:100%;\">");
-document.write("<iframe name=\"weather_inc\" src=\"http://i.tianqi.com/index.php?c=code&id=7\" width=\"250\" height=\"90\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\"></iframe>");
+document.write("<iframe name=\"weather_inc\" src=\"http://i.tianqi.com/index.php?c=code&id=7\" style=\"border:solid 1px #7ec8ea\" width=\"250\" height=\"90\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\"></iframe>");
 document.write("</div>");
 
 document.write("<h3>Latest</h3>");
