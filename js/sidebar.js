@@ -1,4 +1,9 @@
 ﻿document.write("<div class=\"sidebar\">");
+
+document.write("<div style=\"text-align:left;width:100%;\">");
+document.write("<iframe name=\"weather_inc\" src=\"http://i.tianqi.com/index.php?c=code&id=7\" width=\"250\" height=\"90\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\"></iframe>");
+document.write("</div>");
+
 document.write("<h3>Latest</h3>");
 document.write("<p><a href=\"Blogs\\20140723001.html\">Caffe + Ubuntu 14.04 + CUDA 6.5 新手安装配置指南</a> <i style=\"color:gray;\">[2014-07-23]</i></p>");
 document.write("<p><a href=\"Blogs\\20140719001.html\">Caffe配置指南 on Windows8.1 + CUDA6.5 + VS2013 </a> <i style=\"color:gray;\">[2014-07-19]</i></p>");
