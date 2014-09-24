@@ -212,14 +212,14 @@
         <p>1. 切换到Caffe的下载文件夹，然后执行：</p>
         <p class="navyBold">$ cp Makefile.config.example Makefile.config</p>
         <p>修改新生成的Makefile.config文件，修改“BLAS := mkl”，这个非常重要。</p>
-	<p>希望使用nVidia开发的cuDNN来加速Caffe模型运算的同学，在安装完cuDNN之后，确保Makefile.config文件中的USE_CUDNN := 1处于启用状态。幸运的是，新版的Caffe已经默认集成了cuDNN的库文件，不需要做额外的设置了。</p>
-	<p class"red"><strong>cuDNN的安装方法如下：</strong></p>
-	<p><a href="http://devblogs.nvidia.com/parallelforall/accelerate-machine-learning-cudnn-deep-neural-network-library/" target="_blank"/>cuDNN Introdution and Download</a></p>
-	<p class="navyBold">$ sudo cp cudnn.h /usr/local/include</p>
-	<p class="navyBold">$ sudo cp libcudnn.so /usr/local/lib</p>
-	<p class="navyBold">$ sudo cp libcudnn.so.6.5 /usr/local/lib</p>
-	<p class="navyBold">$ sudo cp libcudnn.so.6.5.18 /usr/local/lib</p>
-	<p>OK,下面可以编译caffe-master了！！！</p>
+	    <p>希望使用nVidia开发的cuDNN来加速Caffe模型运算的同学，在安装完cuDNN之后，确保Makefile.config文件中的USE_CUDNN := 1处于启用状态。幸运的是，新版的Caffe已经默认集成了cuDNN的库文件，不需要做额外的设置了。</p>
+	    <p class"red"><strong>cuDNN的安装方法如下：</strong></p>
+	    <p><a href="http://devblogs.nvidia.com/parallelforall/accelerate-machine-learning-cudnn-deep-neural-network-library/" target="_blank"/>cuDNN Introdution and Download</a></p>
+	    <p class="navyBold">$ sudo cp cudnn.h /usr/local/include</p>
+	    <p class="navyBold">$ sudo cp libcudnn.so /usr/local/lib</p>
+	    <p class="navyBold">$ sudo cp libcudnn.so.6.5 /usr/local/lib</p>
+	    <p class="navyBold">$ sudo cp libcudnn.so.6.5.18 /usr/local/lib</p>
+	    <p>OK,下面可以编译caffe-master了！！！</p>
         <p class="navyBold">$ make all</p>
         <p class="navyBold">$ make test</p>
         <p class="navyBold">$ make runtest </p>
@@ -233,6 +233,8 @@
         <p class="red">修改：DEFINE_CAFFE_CPU_UNARY_FUNC(sgnbit, y[i] = signbit(x[i]));</p>
         <p class="red">为：DEFINE_CAFFE_CPU_UNARY_FUNC(sgnbit, y[i] = std::signbit(x[i]));</p>
         <p>得到作者，大神Yangqing Jia的回复，解决方法如上，没有二致。</p>
+        <p>3. 如果提示“./build/tools/caffe: error while loading shared libraries: libcudnn.so.6.5: cannot open shared object file: No such file or directory”那是因为cuDNN没有链接成功，只能做一下硬链接，操作方法如下：</p>
+        <p class="navyBold">$ sudo ln -sf /usr/local/lib/cudnn.so.6.5.18 /usr/lib/libcudnn.so.6.5</p>
         <p class="Bold">六、使用MNIST数据集进行测试</p>
         <p>Caffe默认情况会安装在$CAFFE_ROOT，就是解压到那个目录，例如：$ home/username/caffe-master，所以下面的工作，默认已经切换到了该工作目录。下面的工作主要是，用于测试Caffe是否工作正常，不做详细评估。具体设置请参考官网：http://caffe.berkeleyvision.org/gathered/examples/mnist.html </p>
         <p>1. 数据预处理</p>
