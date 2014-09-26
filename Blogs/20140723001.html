@@ -45,7 +45,8 @@
         <p>我的分区设置如下：</p>
         <p class="red">根分区： \  50G，</p>
         <p class="red">Swap交换分区：16G ，这里，我设置和我的内存一样，据说小于16G的内存，就设置成内存的1.5-2倍</p>
-        <p class="red">Home分区：剩余的34G</p>
+        <p class="red">boot分区：200M</p>
+        <p class="red">Home分区：剩余的空间，鉴于Imagenet之类的大客户，建议500G，至少300G以上。</p>
         <p>装好之后，重启电脑，有的人会直接进Linux，有的会直接Windows，谷歌或者百度解决方法吧，因为我也说不清这个具体怎么搞定。</p>
         <p>我的台式机，搞定了，可是笔记本，把Windows分区也给破坏了，最后只能重装Windows 8.1，但因为笔记本没有nVidia的GPU所以不想再折腾了。</p>
         <p>PS: 其实到现在感觉空间可能小了, 想想Imagenet 137G的训练文件，觉得应该把Home设置成300-500G以上，会更合适吧。下次安装的时候，再改了，现在暂时不想动了。</p>
@@ -58,6 +59,9 @@
         <p class="navyBold">$ sudo cp /etc/resolv.conf /etc/resolv.dnsmasq.conf</p>
         <p class="navyBold">$ sudo gedit /etc/resolv.conf</p>
         <p>删除所有域名服务器，保留：nameserver 127.0.0.1</p>
+        <p class="navyBold" >基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
+        <p>$ sudo update-grub</p>
+        <p>该方法，适用于，看的到Linux，看不到Windows的，反过来的话，请大家自己百度吧。</p>
         <br />
 
         <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试</h1>
