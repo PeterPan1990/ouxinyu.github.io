@@ -255,7 +255,7 @@
 	<p>PS: 这里可能会遇到一个报错信息：</p>
 	<p class="red">Creating lmdb...</p>
 	<p class="red">./create_mnist.sh: 16: ./create_mnist.sh: build/examples/mnist/convert_mnist_data.bin: not found</p>
-	<p>解决方法是，直接到Caffe-master的根目录执行</p>
+	<p>解决方法是，直接到Caffe-master的根目录执行，实际上新版的Caffe，基本上都得从根目录执行。</p>
 	<p class="navyBold">~/caffe-master$ sudo sh examples/mnist/create_mnist.sh</p>
 		
 
@@ -268,6 +268,9 @@
         <p class="red">Windows8.1 on GPU：190s</p>
         <p class="red">Ubuntu 14.04 on CPU：270s </p>
         <p class="red">Ubuntu 14.04 on GPU：160s</p>
+        <p class="red">Ubuntu 14.04 on GPU with cuDNN：35s</p>
+        <p class="red">Cifar10_full on GPU wihtout cuDNN：73m45s = 4428s　<i>（Iteration 70000）</i></p>
+        <p class="red">Cifar10_full on GPU with cuDNN：20m7s = 1207s　<i>（Iteration 70000）</i></p>
         <br />
 
         <h1 style="color:navy;">第四部分 Python安装和调试</h1>
