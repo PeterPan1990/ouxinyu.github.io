@@ -46,12 +46,8 @@
         <p class="red">根分区： \  50G，</p>
         <p class="red">Swap交换分区：16G ，这里，我设置和我的内存一样，据说小于16G的内存，就设置成内存的1.5-2倍</p>
         <p class="red">boot分区：200M</p>
-        <p class="red">Home分区：剩余的空间，鉴于Imagenet之类的大客户，建议500G，至少300G以上。</p>
-        <p>装好之后，重启电脑，有的人会直接进Linux，有的会直接Windows，谷歌或者百度解决方法吧，因为我也说不清这个具体怎么搞定。</p>
-        <p>我的台式机，搞定了，可是笔记本，把Windows分区也给破坏了，最后只能重装Windows 8.1，但因为笔记本没有nVidia的GPU所以不想再折腾了。</p>
-        <p>PS: 其实到现在感觉空间可能小了, 想想Imagenet 137G的训练文件，觉得应该把Home设置成300-500G以上，会更合适吧。下次安装的时候，再改了，现在暂时不想动了。</p>
-        <p>PS：今天还是重新装了，把home分区扩大到500G。所以建议真的要大数据实验的小伙伴，也趁早考虑。</p>
-        <p>PS： Ubuntu下访问网页总是很慢，让我深感它和Windows的差距，可是为什么还是有那么多人向往它呢？下面的办法可以解决部分访问的问题，特别是国外的网站，但是遇到一些调用了被墙的网站的东西，比如google的字体，还是没办法，仍然会在哪里转圈圈。这里似乎是操作系统的机制引起，Windows的浏览器会忽略那些错误，而Ubuntu下的浏览器会不停尝试。废话少说，部分问题的解决办法（经过一段时间的测试，感觉完全没有用，不知道为什么Linux下上网，就是效果很差，相对于Windows来说，简直是几千倍的差距）：</p>
+        <p class="red">Home分区：剩余的空间，鉴于Imagenet，PASCAL VOC之类的大客户，建议500G，至少300G以上。</p>
+        <p>PS1： Ubuntu下访问网页总是很慢，让我深感它和Windows的差距，可是为什么还是有那么多人向往它呢？下面的办法可以解决部分访问的问题，特别是国外的网站，但是遇到一些调用了被墙的网站的东西，比如google的字体，还是没办法，仍然会在哪里转圈圈。这里似乎是操作系统的机制引起，Windows的浏览器会忽略那些错误，而Ubuntu下的浏览器会不停尝试。废话少说，部分问题的解决办法（经过一段时间的测试，感觉完全没有用，不知道为什么Linux下上网，就是效果很差，相对于Windows来说，简直是几千倍的差距）：</p>
         <p class="navyBold">$ sudo apt-get install dnsmasq</p>
         <p class="navyBold">$ sudo gedit /etc/dnsmasq.conf</p>
         <p class="red">找到 # resolv-file=</p>
@@ -59,12 +55,11 @@
         <p class="navyBold">$ sudo cp /etc/resolv.conf /etc/resolv.dnsmasq.conf</p>
         <p class="navyBold">$ sudo gedit /etc/resolv.conf</p>
         <p>删除所有域名服务器，保留：nameserver 127.0.0.1</p>
-        <p>基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
+        <p>PS2：基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
         <p class="navyBold">$ etc/default/grub</p>
         <p class="red">设置：GRUB_DEFAULT = 2</p>
         <p class="navyBold">$ sudo update-grub</p>
         <p>该方法适用于安装双系统后，"看得到Linux，看不到Windows”的情况，反过来的话，请大家自己百度吧。</p>
-        <br />
 
         <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试</h1>
         <p>PS：这里其实可以参考nVidia 官方提供的CUDA安装手册，非常相近，32页的，不过是全英文的，我就是参考这个文档完成后面的配置和验证工作。https://developer.nvidia.com/rdp/cuda-65-rc-toolkit-download#linux。一般要输入你的用户名和密码，就是下载6.5的那个账号。 </p>
