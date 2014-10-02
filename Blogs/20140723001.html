@@ -51,7 +51,7 @@
         <p>我的台式机，搞定了，可是笔记本，把Windows分区也给破坏了，最后只能重装Windows 8.1，但因为笔记本没有nVidia的GPU所以不想再折腾了。</p>
         <p>PS: 其实到现在感觉空间可能小了, 想想Imagenet 137G的训练文件，觉得应该把Home设置成300-500G以上，会更合适吧。下次安装的时候，再改了，现在暂时不想动了。</p>
         <p>PS：今天还是重新装了，把home分区扩大到500G。所以建议真的要大数据实验的小伙伴，也趁早考虑。</p>
-        <p>PS： Ubuntu下访问网页总是很慢，让我深感它和Windows的差距，可是为什么还是有那么多人向往它呢？下面的办法可以解决部分访问的问题，特别是国外的网站，但是遇到一些调用了被墙的网站的东西，比如google的字体，还是没办法，仍然会在哪里转圈圈。这里似乎是操作系统的机制引起，Windows的浏览器会忽略那些错误，而Ubuntu下的浏览器会不停尝试。废话少说，部分问题的解决办法：</p>
+        <p>PS： Ubuntu下访问网页总是很慢，让我深感它和Windows的差距，可是为什么还是有那么多人向往它呢？下面的办法可以解决部分访问的问题，特别是国外的网站，但是遇到一些调用了被墙的网站的东西，比如google的字体，还是没办法，仍然会在哪里转圈圈。这里似乎是操作系统的机制引起，Windows的浏览器会忽略那些错误，而Ubuntu下的浏览器会不停尝试。废话少说，部分问题的解决办法（经过一段时间的测试，感觉完全没有用，不知道为什么Linux下上网，就是效果很差，相对于Windows来说，简直是几千倍的差距）：</p>
         <p class="navyBold">$ sudo apt-get install dnsmasq</p>
         <p class="navyBold">$ sudo gedit /etc/dnsmasq.conf</p>
         <p class="red">找到 # resolv-file=</p>
@@ -60,8 +60,10 @@
         <p class="navyBold">$ sudo gedit /etc/resolv.conf</p>
         <p>删除所有域名服务器，保留：nameserver 127.0.0.1</p>
         <p class="navyBold" >基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
+        <p class="navyBold">$ etc/default/grub</p>
+        <p class="red">设置：GRUB_DEFAULT = 2</p>
         <p>$ sudo update-grub</p>
-        <p>该方法，适用于，看的到Linux，看不到Windows的，反过来的话，请大家自己百度吧。</p>
+        <p>该方法适用于安装双系统后，"看得到Linux，看不到Windows”的情况，反过来的话，请大家自己百度吧。</p>
         <br />
 
         <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试</h1>
@@ -192,9 +194,9 @@
         <p class="Bold">三、安装OpenCV</p>
         <p>1. 下载地址：https://github.com/jayrambhia/Install-OpenCV，如果觉得难度不够的话，可以选择官网的安装包：http://opencv.org/，我这里是根据大神编译过的版本进行安装的。 </p>
         <p>2. 切换到文件保存的文件夹，然后安装依赖项：</p>
-        <p class="navyBold">sudo ./dependencies.sh</p>
+        <p class="navyBold">sudo sh ./dependencies.sh</p>
         <p>3. 安装openCV，因为不知道有什么区别，所以就安装最新版opencv2_4_8吧，有偏好可以根据自己的要求进行设置：</p>
-        <p class="navyBold">sudo ./opencv2_4_8.sh</p>
+        <p class="navyBold">sudo sh ./opencv2_4_8.sh</p>
         <p>保证网络畅通，因为软件需要联网这里时间较长，请耐心等待。。。，所以就安</p>
         <p class="Bold">四、安装其他依赖项</p>
         <p>1. Google Logging Library（glog），下载地址：https://code.google.com/p/google-glog/，然后解压安装： </p>
@@ -223,6 +225,10 @@
 	    <p class="navyBold">$ sudo cp libcudnn.so /usr/local/lib</p>
 	    <p class="navyBold">$ sudo cp libcudnn.so.6.5 /usr/local/lib</p>
 	    <p class="navyBold">$ sudo cp libcudnn.so.6.5.18 /usr/local/lib</p>
+        <p>链接cuDNN的库文件</p>
+        <p class="navyBold">$ sudo ln -sf /usr/local/lib/cudnn.so.6.5.18 /usr/lib/libcudnn.so.6.5</p>
+        <p>不做链接，可能会出现这个报错：“./build/tools/caffe: error while loading shared libraries: libcudnn.so.6.5: cannot open shared object file: No such file or directory”那是因为cuDNN没有链接成功，只能做一下硬链接。</p>
+
 	    <p>OK,下面可以编译caffe-master了！！！</p>
         <p class="navyBold">$ make all</p>
         <p class="navyBold">$ make test</p>
@@ -237,8 +243,7 @@
         <p class="red">修改：DEFINE_CAFFE_CPU_UNARY_FUNC(sgnbit, y[i] = signbit(x[i]));</p>
         <p class="red">为：DEFINE_CAFFE_CPU_UNARY_FUNC(sgnbit, y[i] = std::signbit(x[i]));</p>
         <p>得到作者，大神Yangqing Jia的回复，解决方法如上，没有二致。</p>
-        <p>3. 如果提示“./build/tools/caffe: error while loading shared libraries: libcudnn.so.6.5: cannot open shared object file: No such file or directory”那是因为cuDNN没有链接成功，只能做一下硬链接，操作方法如下：</p>
-        <p class="navyBold">$ sudo ln -sf /usr/local/lib/libcudnn.so.6.5.18 /usr/lib/libcudnn.so.6.5</p>
+
         <p class="Bold">六、使用MNIST数据集进行测试</p>
         <p>Caffe默认情况会安装在$CAFFE_ROOT，就是解压到那个目录，例如：$ home/username/caffe-master，所以下面的工作，默认已经切换到了该工作目录。下面的工作主要是，用于测试Caffe是否工作正常，不做详细评估。具体设置请参考官网：http://caffe.berkeleyvision.org/gathered/examples/mnist.html </p>
         <p>1. 数据预处理</p>
@@ -252,7 +257,7 @@
 	<p>PS: 这里可能会遇到一个报错信息：</p>
 	<p class="red">Creating lmdb...</p>
 	<p class="red">./create_mnist.sh: 16: ./create_mnist.sh: build/examples/mnist/convert_mnist_data.bin: not found</p>
-	<p>解决方法是，直接到Caffe-master的根目录执行</p>
+	<p>解决方法是，直接到Caffe-master的根目录执行，实际上新版的Caffe，基本上都得从根目录执行。</p>
 	<p class="navyBold">~/caffe-master$ sudo sh examples/mnist/create_mnist.sh</p>
 		
 
@@ -265,6 +270,9 @@
         <p class="red">Windows8.1 on GPU：190s</p>
         <p class="red">Ubuntu 14.04 on CPU：270s </p>
         <p class="red">Ubuntu 14.04 on GPU：160s</p>
+        <p class="red">Ubuntu 14.04 on GPU with cuDNN：35s</p>
+        <p class="red">Cifar10_full on GPU wihtout cuDNN：73m45s = 4428s　<i>（Iteration 70000）</i></p>
+        <p class="red">Cifar10_full on GPU with cuDNN：20m7s = 1207s　<i>（Iteration 70000）</i></p>
         <br />
 
         <h1 style="color:navy;">第四部分 Python安装和调试</h1>
