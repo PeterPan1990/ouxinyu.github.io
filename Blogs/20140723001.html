@@ -59,10 +59,10 @@
         <p class="navyBold">$ sudo cp /etc/resolv.conf /etc/resolv.dnsmasq.conf</p>
         <p class="navyBold">$ sudo gedit /etc/resolv.conf</p>
         <p>删除所有域名服务器，保留：nameserver 127.0.0.1</p>
-        <p class="navyBold" >基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
+        <p>基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
         <p class="navyBold">$ etc/default/grub</p>
         <p class="red">设置：GRUB_DEFAULT = 2</p>
-        <p>$ sudo update-grub</p>
+        <p class="navyBold">$ sudo update-grub</p>
         <p>该方法适用于安装双系统后，"看得到Linux，看不到Windows”的情况，反过来的话，请大家自己百度吧。</p>
         <br />
 
@@ -103,7 +103,7 @@
         <p class="red">末尾写入：rdblacklist=nouveau nouveau.modeset=0</p>
         <p>保存并退出: wq!</p>
         <p class="navyBold">检查：$ cat /etc/default/grub</p>
-        <p>3. 官网提供的操作：</p>
+        <p>3. 官网提供的操作：(感觉上这一小步，可以略过，不执行，执行了也会报错)</p>
         <p class="navyBold">$ sudo mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img</p>
         <p>然后重新生成initrd文件</p>
         <p class="navyBold">$ sudo dracut /boot/initramfs-$(uname -r).img $(uname -r)</p>
