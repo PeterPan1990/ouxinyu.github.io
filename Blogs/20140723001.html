@@ -47,7 +47,8 @@
         <p class="red">Swap交换分区：16G ，这里，我设置和我的内存一样，据说小于16G的内存，就设置成内存的1.5-2倍</p>
         <p class="red">boot分区：200M</p>
         <p class="red">Home分区：剩余的空间，鉴于Imagenet，PASCAL VOC之类的大客户，建议500G，至少300G以上。</p>
-        <p>PS1： Ubuntu下访问网页总是很慢，让我深感它和Windows的差距，可是为什么还是有那么多人向往它呢？下面的办法可以解决部分访问的问题，特别是国外的网站，但是遇到一些调用了被墙的网站的东西，比如google的字体，还是没办法，仍然会在哪里转圈圈。这里似乎是操作系统的机制引起，Windows的浏览器会忽略那些错误，而Ubuntu下的浏览器会不停尝试。废话少说，部分问题的解决办法（经过一段时间的测试，感觉完全没有用，不知道为什么Linux下上网，就是效果很差，相对于Windows来说，简直是几千倍的差距）：</p>
+        <p><strong>PS1：网速慢（Linux的绝招^_^）</strong></p>
+        <p>Ubuntu下访问网页总是很慢，让我深感它和Windows的差距，可是为什么还是有那么多人向往它呢？下面的办法可以解决部分访问的问题，特别是国外的网站，但是遇到一些调用了被墙的网站的东西，比如google的字体，还是没办法，仍然会在哪里转圈圈。这里似乎是操作系统的机制引起，Windows的浏览器会忽略那些错误，而Ubuntu下的浏览器会不停尝试。废话少说，部分问题的解决办法（经过一段时间的测试，感觉完全没有用，不知道为什么Linux下上网，就是效果很差，相对于Windows来说，简直是几千倍的差距）：</p>
         <p class="navyBold">$ sudo apt-get install dnsmasq</p>
         <p class="navyBold">$ sudo gedit /etc/dnsmasq.conf</p>
         <p class="red">找到 # resolv-file=</p>
@@ -55,7 +56,8 @@
         <p class="navyBold">$ sudo cp /etc/resolv.conf /etc/resolv.dnsmasq.conf</p>
         <p class="navyBold">$ sudo gedit /etc/resolv.conf</p>
         <p>删除所有域名服务器，保留：nameserver 127.0.0.1</p>
-        <p>PS2：基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
+        <p><strong> PS2：启动分区错误</strong></p>
+        <p> 基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
         <p class="navyBold">$ etc/default/grub</p>
         <p class="red">设置：GRUB_DEFAULT = 2</p>
         <p class="navyBold">$ sudo update-grub</p>
