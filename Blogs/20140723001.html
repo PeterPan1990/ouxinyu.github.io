@@ -108,9 +108,9 @@
         <p>上面那条是nVidia官方提供的命令，不知道为什么在我这里会提示dracut是不存在的命令，也许是版本问题，或者少了什么包，不过无所谓，第二条命令也可以搞定，应该是一样的功能。（如果我理解错误，欢迎小朋友们指教，我会改正）</p>
         <p>PS：其实，这一连串的工作，有点没搞懂，因为有的命令和文件不存在。原理理解了，但是步骤还是有点模糊，不过，我是照上面的操作完成了，后面的也没出问题，应该应付过去了吧。</p>
         <p class="Bold">八、Installation</p>
-        <p>鉴于安装过程中遇到的一些问题和启示，建议先安装官方最新版的显卡驱动，然后再安装CUDA，这里可能是CUDA内置的驱动不太完整，或者适应性差了一点。GTX显卡驱动的下载地址如下（Tesla版的驱动，请大家自己去nVidia的官网下载）：</p>
+        <p>默认情况下，可以跳过显卡驱动的安装，直接安装CUDA，因为它包含了Drivers,Toolkit和Sample三个部分，但是如果出现问题，可以尝试二次安装CUDA或者利用官方的显卡驱动，来进行处理。GTX显卡驱动的下载地址如下（Tesla版的驱动，请大家自己去nVidia的官网下载）：</p>
         <p>下载地址：http://www.geforce.cn/drivers </p>
-        <p class="navyBold">$ sudo sh ./NVIDIA-Linux-x86_64-340.24.run</p>
+        <p class="navyBold">$ sudo sh ./NVIDIA-Linux-x86_64-340.24.run (Optional)</p>
         <p>切换到cuda_6.5.11_rc_linux_64.run 所在的目录，然后执行安装命令：</p>
         <p class="navyBold">$ sudo sh cuda_6.5.11_rc_linux_64.run</p>
         <p>再次提醒，安装前一定要执行 md5sum ，我第一次安装就是执行了，发现不一样，然后没有理它直接安装，导致安装的Sumary里显示Driver成功，Toolkit和Samples失败，第二次在装就好了。</p>
@@ -191,16 +191,17 @@
         <p class="Bold">三、安装OpenCV</p>
         <p>1. 下载地址：https://github.com/jayrambhia/Install-OpenCV，如果觉得难度不够的话，可以选择官网的安装包：http://opencv.org/，我这里是根据大神编译过的版本进行安装的。 </p>
         <p>2. 切换到文件保存的文件夹，然后安装依赖项：</p>
-        <p class="navyBold">./dependencies.sh</p>
+        <p class="navyBold">sudo ./dependencies.sh</p>
         <p>3. 安装openCV，因为不知道有什么区别，所以就安装最新版opencv2_4_8吧，有偏好可以根据自己的要求进行设置：</p>
-        <p class="navyBold"> ./opencv2_4_8.sh</p>
+        <p class="navyBold"> sudo sh ./opencv2_4_8.sh</p>
         <p>保证网络畅通，因为软件需要联网这里时间较长，请耐心等待。。。，所以就安</p>
         <p class="Bold">四、安装其他依赖项</p>
         <p>1. Google Logging Library（glog），下载地址：https://code.google.com/p/google-glog/，然后解压安装： </p>
         <p class="navyBold">$ tar zxvf glog-0.3.3.tar.gz</p>
-        <p class="navyBold">$ ./ configure</p>
+        <p class="navyBold">$ ./configure</p>
         <p class="navyBold">$ make</p>
         <p class="navyBold">$ sudo make install</p>
+        <p class="red">如过没有权限就chmod a+x glog-0.3.3 -R , 或者索性 chmod 777 glog-0.3.3 -R , 装完之后，这个文件夹就可以kill了。</p>
         <p>2. 其他依赖项，确保都成功</p>
         <p class="navyBold">$ sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev</p>
         <p>如果安装过程中出现错误，E: Sub-process /usr/bin/dpkg returned an error code (1)，可能是因为sudo apt-get install出现到意外，不用着急，可以试试这个解决办法：</p>
