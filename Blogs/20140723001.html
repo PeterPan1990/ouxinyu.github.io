@@ -174,7 +174,7 @@
         <p>4. 安装的时候，可以安装到root权限下，或者sudo权限，我是装在root权限下，避免麻烦，这时就必须确保已经为root设置过密码了，然后会让你输入你申请的时候发给你的序列号。没设置的话，执行：</p>
         <p class="navyBold">$ sudo passwd root</p>
         <p>5. Everything is OK！</p>
-        <p>PS2：我不会告诉你，我第一次安装的时候，不仅仅装了Studio XE，还装了MKL，也装了OpenBLAS，为了装OpenBLAS还装来gFortran编译器，因为一直编译Caffe不通过，其实这都是白费功夫，都是没有认真读官网的说明导致的。至于这集中库的性能，应该是MKL>OpenBLAS>ATLAS，官网的介绍也提到。在装完MKL，需要做的一件事是：SET BLAS := open in Makefile.config，这个我在后面安装Caffe到时候会写。</p>
+        <p>PS2：我不会告诉你，我第一次安装的时候，不仅仅装了Studio XE，还装了MKL，也装了OpenBLAS，为了装OpenBLAS还装来gFortran编译器，因为一直编译Caffe不通过，其实这都是白费功夫，都是没有认真读官网的说明导致的。至于这集中库的性能，应该是MKL>OpenBLAS>ATLAS，官网的介绍也提到。在装完MKL，需要做的一件事是：SET BLAS := mkl in Makefile.config，这个我在后面安装Caffe到时候会写。</p>
         <p class="Bold">二、MKL与CUDA的环境设置</p>
         <p>文件夹切换到/etc/ld.so.conf.d，并进行如下操作</p>
         <p>1. 新建intel_mkl.conf， 并编辑之：</p>
@@ -224,7 +224,7 @@
 	    <p class="navyBold">$ sudo cp libcudnn.so.6.5 /usr/local/lib</p>
 	    <p class="navyBold">$ sudo cp libcudnn.so.6.5.18 /usr/local/lib</p>
         <p>链接cuDNN的库文件</p>
-        <p class="navyBold">$ sudo ln -sf /usr/local/lib/cudnn.so.6.5.18 /usr/lib/libcudnn.so.6.5</p>
+        <p class="navyBold">$ sudo ln -sf /usr/local/lib/cudnn.so.6.5.18 /usr/local/lib/libcudnn.so.6.5</p>
         <p>不做链接，可能会出现这个报错：“./build/tools/caffe: error while loading shared libraries: libcudnn.so.6.5: cannot open shared object file: No such file or directory”那是因为cuDNN没有链接成功，只能做一下硬链接。</p>
 
 	    <p>OK,下面可以编译caffe-master了！！！</p>
@@ -234,7 +234,7 @@
         <p>错误Fixed：</p>
         <p>1. 如果提示： make: protoc: 命令未找到，那是因为protoc没有安装，安装一下就好了。</p>
         <p class="navyBold">$ sudo apt-get install protobuf-c-compiler protobuf-compiler</p>
-        <p>2. 提示“src/caffe/util/math_functions.cu(140): error: calling a host function("std::signbit ") from a globalfunction("caffe::sgnbit_kernel ") is not allowed”</p>
+        <p>2. (该问题已经在9月以后的Caffe中得到作者修复)提示“src/caffe/util/math_functions.cu(140): error: calling a host function("std::signbit ") from a globalfunction("caffe::sgnbit_kernel ") is not allowed”</p>
         <p>解决办法：</p>
         <p class="red">修改  ./include/caffe/util/math_functions.hpp 224行</p>
         <p class="red">删除(注释)：using std::signbit;</p>
@@ -264,11 +264,11 @@
         <p class="navyBold">$ sudo sh ./train_lenet.sh</p>
         <p>至此，Caffe安装的所有步骤完结，下面是一组简单的数据对比，实验来源于MNIST数据集，主要是考察一下不同系统下CPU和GPU的性能。可以看到明显的差别了，虽然MNIST数据集很简单，相信复杂得数据集，差别会更大，Ubuntu+GPU是唯一的选择了。</p>
         <p class="red">测试平台：i7-4770K/16G/GTX 770/CUDA 6.5</p>
-        <p class="red">Windows8.1 on CPU：620s</p>
-        <p class="red">Windows8.1 on GPU：190s</p>
-        <p class="red">Ubuntu 14.04 on CPU：270s </p>
-        <p class="red">Ubuntu 14.04 on GPU：160s</p>
-        <p class="red">Ubuntu 14.04 on GPU with cuDNN：35s</p>
+        <p class="red">MNIST Windows8.1 on CPU：620s</p>
+        <p class="red">MNIST Windows8.1 on GPU：190s</p>
+        <p class="red">MNIST Ubuntu 14.04 on CPU：270s </p>
+        <p class="red">MNIST Ubuntu 14.04 on GPU：160s</p>
+        <p class="red">MNIST Ubuntu 14.04 on GPU with cuDNN：35s</p>
         <p class="red">Cifar10_full on GPU wihtout cuDNN：73m45s = 4428s　<i>（Iteration 70000）</i></p>
         <p class="red">Cifar10_full on GPU with cuDNN：20m7s = 1207s　<i>（Iteration 70000）</i></p>
         <br />
