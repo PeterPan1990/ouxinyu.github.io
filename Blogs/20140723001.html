@@ -100,13 +100,6 @@
         <p class="red">末尾写入：rdblacklist=nouveau nouveau.modeset=0</p>
         <p>保存并退出: wq!</p>
         <p class="navyBold">检查：$ cat /etc/default/grub</p>
-        <p>3. 官网提供的操作：(感觉上这一小步，可以略过，不执行，执行了也会报错)</p>
-        <p class="navyBold">$ sudo mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img</p>
-        <p>然后重新生成initrd文件</p>
-        <p class="navyBold">$ sudo dracut /boot/initramfs-$(uname -r).img $(uname -r)</p>
-        <p class="navyBold">$ sudo update-initramfs -u  </p>
-        <p>上面那条是nVidia官方提供的命令，不知道为什么在我这里会提示dracut是不存在的命令，也许是版本问题，或者少了什么包，不过无所谓，第二条命令也可以搞定，应该是一样的功能。（如果我理解错误，欢迎小朋友们指教，我会改正）</p>
-        <p>PS：其实，这一连串的工作，有点没搞懂，因为有的命令和文件不存在。原理理解了，但是步骤还是有点模糊，不过，我是照上面的操作完成了，后面的也没出问题，应该应付过去了吧。</p>
         <p class="Bold">八、Installation</p>
         <p>默认情况下，可以跳过显卡驱动的安装，直接安装CUDA，因为它包含了Drivers,Toolkit和Sample三个部分，但是如果出现问题，可以尝试二次安装CUDA或者利用官方的显卡驱动，来进行处理。GTX显卡驱动的下载地址如下（Tesla版的驱动，请大家自己去nVidia的官网下载）：</p>
         <p>下载地址：http://www.geforce.cn/drivers </p>
@@ -213,11 +206,22 @@
         <p class="navyBold">$ sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler</p>
 
         <p class="Bold">五、安装Caffe并测试</p>
-        <p>1. 切换到Caffe的下载文件夹，然后执行：</p>
+        <p>1. 安装caffe必须的一些依赖项：</p>
+        <p class="navyBold">$ sudo apt-get install python-numpy python-scipy python-matplotlib python-sklearn python-skimage python-h5py python-protobuf python-leveldb python-networkx python-nose python-pandas python-gflags Cython ipython</p>
+
+        <p>2. 切换到Caffe的下载文件夹，然后执行：</p>
         <p class="navyBold">$ cp Makefile.config.example Makefile.config</p>
         <p>修改新生成的Makefile.config文件，修改“BLAS := mkl”，这个非常重要。</p>
-	    <p>希望使用nVidia开发的cuDNN来加速Caffe模型运算的同学，在安装完cuDNN之后，确保Makefile.config文件中的USE_CUDNN := 1处于启用状态。幸运的是，新版的Caffe已经默认集成了cuDNN的库文件，不需要做额外的设置了。</p>
-	    <p class"red"><strong>cuDNN的安装方法如下：</strong></p>
+        <p>3. 配置路径，编辑Makefile.config</p>
+        <p class="red">PYTHON_INCLUDE := /usr/include/python2.7 </p>
+        <p class="red">PYTHON_LIB := /usr/local/lib</p>
+        <p class="red">INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include</p>
+        <p class="red">LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib</p>
+        <p>4. 这里非常重要的是，为了确保支持Caffe Notebook里的程序，需要使用到IDE环境，并且支持iPython输出。 </p>
+        <br />
+
+	    <p>5. 希望使用nVidia开发的cuDNN来加速Caffe模型运算的同学，在安装完cuDNN之后，确保Makefile.config文件中的USE_CUDNN := 1处于启用状态。幸运的是，新版的Caffe已经默认集成了cuDNN的库文件，不需要做额外的设置了。</p>
+	    <p class="red"><strong>cuDNN的安装方法如下：</strong></p>
 	    <p><a href="http://devblogs.nvidia.com/parallelforall/accelerate-machine-learning-cudnn-deep-neural-network-library/" target="_blank"/>cuDNN Introdution and Download</a></p>
 	    <p class="navyBold">$ sudo cp cudnn.h /usr/local/include</p>
 	    <p class="navyBold">$ sudo cp libcudnn.so /usr/local/lib</p>
@@ -276,15 +280,7 @@
         <p>这是一个不太公平的测试，毕竟性能差很大，很可能不单单是由Tesla K20s 和GTX 770带来的，也可能是因为CentOS或者是CUDA5.5的影响，但总体上的结论和Caffe官网的<a href="http://caffe.berkeleyvision.org/performance_hardware.html" target="_blank"> reference performance numbers</a> 一致，对于普通用户：gtx的性价比高很多。（感谢香港城市大学PH.D Jingjing提供的测试环境和测试数据。）</p>
         <br/>
        
-        <p>1. 安装caffe必须的一些依赖项：</p>
-        <p class="navyBold">$ sudo apt-get install python-numpy python-scipy python-matplotlib python-sklearn python-skimage python-h5py python-protobuf python-leveldb python-networkx python-nose python-pandas python-gflags Cython ipython</p>
-        <p>2. 配置路径，编辑Makefile.config</p>
-        <p class="red">PYTHON_INCLUDE := /usr/include/python2.7 </p>
-        <p class="red">PYTHON_LIB := /usr/local/lib</p>
-        <p class="red">INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include</p>
-        <p class="red">LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib</p>
-        <p>3. 这里非常重要的是，为了确保支持Caffe Notebook里的程序，需要使用到IDE环境，并且支持iPython输出。 </p>
-        <br />
+
 
         <h1 style="color:navy;">第五部分 Matlab安装和调试</h1>
         <p class="Bold">1.下载</p>
