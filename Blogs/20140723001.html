@@ -106,9 +106,9 @@
           <p class="navyBold">$ export PATH=/usr/local/cuda-6.5/bin:$PATH</p>
           <p class="navyBold">$ export LD_LIBRARY_PATH=/usr/local/cuda-6.5/lib64:$LD_LIBRARY_PATH</p>
           <p>PS：如果出现安装失败，重启系统，重新安装一遍基本都可以解决，实在不行就卸载原来的驱动再安装一遍。</p>
-          <p>1. 卸载现有驱动</p>
+          <p>a. 卸载现有驱动</p>
           <p class="navyBold">$ sudo nvidia-installer --uninstall </p>
-          <p>2. 重装CUDA Toolkit</p>
+          <p>b. 重装CUDA Toolkit</p>
           <p class="navyBold">$ sudo sh cuda_6.5.11_rc_linux_64.run</p>
           <p>好了，到这里所有nVidia CUDA的安装就结束了，下面看看Caffe如何安装</p>
           <br />
@@ -142,7 +142,7 @@
           <p class="Bold">5.创建快捷方式 </p>
           <p>1. 软件中心搜索matlab </p>
           <p>2. 选择安装目录：/usr/local/MATLAB/R2014a</p>
-          <p class="Bold">6.编译Matlab用到的caffe文件</p>
+          <p class="Bold">6.编译Matlab用到的caffe文件（见第五部分）</p>
 
 
           <h1 style="color:navy;">第五部分 Caffe的安装和测试</h1>
@@ -177,7 +177,7 @@
           <p class="navyBold">$ ./configure</p>
           <p class="navyBold">$ make</p>
           <p class="navyBold">$ sudo make install</p>
-          <p class="red">如过没有权限就chmod a+x glog-0.3.3 -R , 或者索性 chmod 777 glog-0.3.3 -R , 装完之后，这个文件夹就可以kill了。</p>
+          <p class="red">如果没有权限就chmod a+x glog-0.3.3 -R , 或者索性 chmod 777 glog-0.3.3 -R , 装完之后，这个文件夹就可以kill了。</p>
           <p>2. 其他依赖项，确保都成功</p>
           <p class="navyBold">$ sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev</p>
           <p class="navyBold">$ sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler</p>
