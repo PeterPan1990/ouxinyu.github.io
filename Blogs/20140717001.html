@@ -25,7 +25,10 @@
         <!-- insert the page content here -->
         <h1>Cuda-convnet配置指南 on Windows8.1+CUDA6.5+VS2013</h1>
           <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
-        <p style="color:red;font-size:16px;font-weight:bold;">特别提醒：强烈建议在配置实用 Caffe 和 Cuda-Convnet 的时候，使用 Linux 操作系统！！！除非你很熟悉 C++ /CUDA 和 Python ，并且可以自行修改和Fix代码中的Bug。</p>
+        <p style="color:red;font-size:16px;font-weight:bold;">特别提醒：</p>
+        <p style="color:red;font-size:16px;font-weight:bold"> 1. 强烈建议在配置实用 Caffe 和 Cuda-Convnet 的时候，使用 Linux 操作系统！！！除非你很熟悉 C++ /CUDA 和 Python ，并且可以自行修改和Fix代码中的Bug。</p>
+        <p style="color:red;font-size:16px;font-weight:bold"> 2. 本贴截稿于2014年7月17日，新版Cuda-Convnet 可能程序会有差别，本贴仅作为参考，不做标准，不对后续版本负责，且停止更新。</p>
+        <p style="color:red;font-size:16px;font-weight:bold"> 3. 使用CNN进行深度学习实验和开发，可以参考我的有关<a href="http://ouxinyu.github.io/Blogs/20140723001.html">Caffe (Ubuntu版)</a> 的配置。</p>
         <p>照例先吐槽一番，毕竟QQ空间不是csdn，不是用来进行技术研讨的，所以随心一点~</p>
         <p>一把年纪的还要来学习编程，学习C++和Python真是有一种欲哭无泪，骑虎难下的感觉，但是走上了DeepLearning这条路，特别是选择了Convolutional Neural Network，这个就不可避免了，原来大家公认的科研神器Matlab在DL面前只能低下高傲的头了，当然除非是哪个像Alex一样的大神跳出来开发一个可以媲美cuda-convnet的Matlab版的CNN，我定会感激涕零的。</p>
         <p>这个指南，一个是个为需要研究用AlexNet研究cnn的小伙伴一个参考，更重要的还是给自己一个备案和深刻记忆的地方。本文撰写的很细，我想特别适合于向我一样的新手。cuda-convnet是Imagenet2012 论文的一个Python的实现，应该也是目前最好的cnn的工程，也许有人对比Caffe，但是根据调查，cuda-convnet应该比caffe效果更好，毕竟Alex实在太强大了，但是Caffe应该相对简单，模块化，有社区讨论，孰优孰劣，只有小朋友们自己选择了。原来的项目是基于Linux的，所以有了修改到Windows下可能会有一些性能损失，但是对于不会Linux的小伙伴，这个应该也是一个福音。</p>
