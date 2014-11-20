@@ -195,7 +195,8 @@
           <p class="navyBold">$ cp Makefile.config.example Makefile.config</p>
           <p>修改新生成的Makefile.config文件，修改“BLAS := mkl”，这个非常重要。</p>
           <p>3. 配置路径，实现caffe对Python和Matlab接口的支持，编辑Makefile.config：</p>
-          <p class="red">PYTHON_INCLUDE := /usr/include/python2.7 </p>
+          <p class="red">PYTHON_INCLUDE := /usr/include/python2.7 \</p>
+          <p class="red" style="text-indent:50px;">/usr/lib/python2.7/dist-packages/numpy/core/include</p>
           <p class="red">PYTHON_LIB := /usr/local/lib</p>
           <p class="red">INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include</p>
           <p class="red">LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib</p>
