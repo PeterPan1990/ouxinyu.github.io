@@ -229,14 +229,14 @@
           <p class="Bold">六、使用MNIST数据集进行测试</p>
           <p>Caffe默认情况会安装在$CAFFE_ROOT，就是解压到那个目录，例如：$ home/username/caffe-master，所以下面的工作，默认已经切换到了该工作目录。下面的工作主要是，用于测试Caffe是否工作正常，不做详细评估。具体设置请参考官网：http://caffe.berkeleyvision.org/gathered/examples/mnist.html </p>
           <p>1. 数据预处理</p>
-          <p class="navyBold">$ sudo sh data/mnist/get_mnist.sh</p>
+          <p class="navyBold">$ sh data/mnist/get_mnist.sh</p>
           <p>2. 重建lmdb/leveldb文件。Caffe支持三种数据格式输入网络，包括Image(.jpg, .png等)，leveldb，lmdb，根据自己需要选择不同输入吧。</p>
-          <p class="navyBold">$ sudo sh examples/mnist/create_mnist.sh</p>
+          <p class="navyBold">$ sh examples/mnist/create_mnist.sh</p>
           <p>生成mnist-train-lmdb 和 mnist-train-lmdb文件夹，这里包含了lmdb格式的数据集</p>
 
 
           <p>3. 训练mnist</p>
-          <p class="navyBold">$ sudo sh examples/mnist/train_lenet.sh</p>
+          <p class="navyBold">$ sh examples/mnist/train_lenet.sh</p>
           <p>至此，Caffe安装的所有步骤完结，下面是一组简单的数据对比，实验来源于MNIST数据集，主要是考察一下不同系统下CPU和GPU的性能。可以看到明显的差别了，虽然MNIST数据集很简单，相信复杂得数据集，差别会更大，Ubuntu+GPU是唯一的选择了。</p>
           <p class="red">测试平台：i7-4770K/16G/GTX 770/CUDA 6.5</p>
           <p class="red">MNIST Windows8.1 on CPU：620s</p>
