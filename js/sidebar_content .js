@@ -7,6 +7,6 @@ document.write("<h3>Contact</h3>");
 document.write("<ul>");
 document.write("<li>E—Mail：shiorioxy@qq.com</li>");
 document.write("<li style=\"text-indent:52px;\">ouxinyu@hust.edu.cn</li>");
-document.write("<li>QQ/微信：14777591</li>");
+document.write("<li>QQ：14777591</li>");
 document.write("</ul>");
 document.write("</div>");
