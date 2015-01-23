@@ -37,7 +37,7 @@
 
           <p>洋洋洒洒一大篇，就没截图了，经过几个月的使用，使用Caffe还是建议在Ubuntu系统下完成，因为不需要太多的编程，Windows版需要一定的编程基础，且因为没有官方Release版，所以更新和FixBug都麻烦一些.这里有个建议是，如果将来要做大数据集，最好事先给Linux留多点空间，比如Imagenet，估计500G都不为过。不过也可以全部使用软链接链接到Windows的NTFS磁盘，我后期实验都是使用这个方法。另外，请阅读完，至少一个部分再进行动手操作，避免多余的工作，写作能力有限，尽请见谅。</p>
           <p>这篇安装指南，适合零基础，新手操作，请高手勿要吐槽！</p>
-          <p>简单介绍一下：Caffe，一种Convolutional Neural Network的工具包，和Alex的cuda-convnet功能类似，但各有特点。都是使用C++ CUDA进行底层编辑，Python进行实现，原作已经更新部署于Ubuntu 14.04，相信14.10也没有问题，也有大神发布了Windows版，但其他相关资料较少，不适合新手使用，所以还是Ubuntu的比较适合新手。（相对而言）</p>
+          <p>简单介绍一下：Caffe，一种Convolutional Neural Network的工具包，和Alex的cuda-convnet功能类似，但各有特点。都是使用C++ CUDA进行底层编辑，Python进行实现，原作主要部署于Ubuntu，也有大神发布了Windows版，但其他相关资料较少，不适合新手使用，所以还是Ubuntu的比较适合新手。（相对而言）</p>
           <p>本文主要包含5个部分，包括：</p>
           <ul>
               <li><strong>第一部分 Linux安装</strong></li>
@@ -169,7 +169,7 @@
           <p>3. 完成lib文件的链接操作，执行：</p>
           <p class="navyBold">$ sudo ldconfig -v</p>
           <p class="Bold">三、安装OpenCV 2.4.10</p>
-          <p>1. 下载<a href="https://github.com/jayrambhia/Install-OpenCV" target="_blank">Install-OpenCV-master</a>（也可以下载官网原版OpenCV：http://opencv.org/，自己编译） ，该集成包中的opencv2.4.8于近期被删除，如果想要下载最新的OpenCV 2.4.10可以下载我修改过的Install-OpenCV-master，百度网盘分享地址：http://pan.baidu.com/s/1m3hQu </p>
+          <p>1. 下载<a href="https://github.com/jayrambhia/Install-OpenCV" target="_blank">Install-OpenCV-master</a>（也可以下载官网原版OpenCV：http://opencv.org/，自己编译） ，该集成包中的opencv2.4.8于近期被删除，如果想要下载最新的OpenCV 2.4.10可以下载我修改过的Install-OpenCV-master，百度网盘分享地址：http://pan.baidu.com/s/1eQ9xy8q (不保证长期有效) </p>
           <p>2. 切换到文件保存的文件夹，然后安装依赖项：</p>
           <p class="navyBold">$ sudo ./dependencies.sh</p>
           <p>3. 切换目录Ubuntu\2.4\安装openCV 2.4.10：</p>
