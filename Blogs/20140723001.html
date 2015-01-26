@@ -243,7 +243,7 @@
           <p class="red">MNIST Windows8.1 on GPU：190s</p>
           <p class="red">MNIST Ubuntu 14.04 on CPU：270s </p>
           <p class="red">MNIST Ubuntu 14.04 on GPU：160s</p>
-          <p class="red">MNIST Ubuntu 14.04 on GPU with cuDNN：35s</p>
+          <p class="red">MNIST Ubuntu 14.04 on GPU with cuDNN：32s</p>
           <p class="red">Cifar10_full on GPU wihtout cuDNN：73m45s = 4428s　<i>（Iteration 70000）</i></p>
           <p class="red">Cifar10_full on GPU with cuDNN：20m7s = 1207s　<i>（Iteration 70000）</i></p>
           <br />
@@ -251,7 +251,9 @@
           <p class="red">MNIST CentOS 6.4 on GPU：294s</p>
           <p class="red">对比测试2：Tesla K40M/CUDA6.5/ubuntu 14.04</p>
           <p class="red">MNIST on GPU with cuDNN：30s</p>
-          <p>对比试验1是一个不太公平的测试，毕竟性能差很大，很可能不单单是由Tesla K20s 和GTX 770带来的，也可能是因为CentOS或者是CUDA5.5的影响，但总体上的结论和Caffe官网的<a href="http://caffe.berkeleyvision.org/performance_hardware.html" target="_blank"> reference performance numbers</a> 一致，对于普通用户：GTX的性价比高很多。对比试验2展现了Tesla K40的强大性能，相信对于复杂图像，它应该有更强劲的表现。（感谢香港城市大学 Ph.D Jingjing 和南京理工大学 Ph.D JinLu 提供的测试环境和测试数据。）</p>
+          <p class="red">对比测试3：GTX 660/CUDA6.5/ubuntu 14.04</p>
+          <p class="red">MNIST on GPU with cuDNN：49s</p>
+          <p>对比试验1是一个不太公平的测试，毕竟性能差很大，很可能不单单是由Tesla K20s 和GTX 770带来的，也可能是因为CentOS或者是CUDA5.5的影响，但总体上的结论和Caffe官网的<a href="http://caffe.berkeleyvision.org/performance_hardware.html" target="_blank"> reference performance numbers</a> 一致，对于普通用户：GTX的性价比高很多。对比试验2展现了Tesla K40的强大性能，相信对于复杂图像，它应该有更强劲的表现。（感谢香港城市大学 Ph.D Jingjing、南京理工大学 Ph.D JinLu、华中科技大学 MS LiuMaolin 提供的测试环境和测试数据。）</p>
           <br />
 
 
