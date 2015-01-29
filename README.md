@@ -2,4 +2,4 @@ ouxinyu.github.io
 =================
 
 ouxinyu.github.io
-$ f(x)=x^2$
+$$ f(x)=x^2$$
