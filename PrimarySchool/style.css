@@ -1,8 +1,8 @@
 * {margin:0;padding:0}
 html, body {height:100%}
 html {min-width:1000px}
-body {background:#fff;font-family:Tahoma, Arial, helvetica, sans-serif;font-size:100%;line-height:1em;color:#000}
-input, textarea, select {font-family:Tahoma, Arial, helvetica, sans-serif;font-size:1em}
+body {background:#fff;font-family:trebuchet ms, Arial, helvetica, sans-serif;font-size:100%;line-height:1em;color:#000}
+input, textarea, select {font-family:trebuchet ms, Arial, helvetica, sans-serif;font-size:1em}
 object {vertical-align:top;outline:none}
 p {margin:0;padding:0}
 /* forms */
