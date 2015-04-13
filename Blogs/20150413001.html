@@ -26,16 +26,12 @@
           <h1>SPP-net + Windows 8.1 安装配置指南</h1>
           <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
           <p style="color:red;font-size:14px;"><strong><i>特别说明：</i></strong></p>
-          <p style="color:red;font-size:14px;"><strong><i>1. 本文所用软件来自于微软2014年发布的论文《Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition》，源代码发布地址：https://github.com/ShaoqingRen/SPP_net</i></strong></p>
           <p style="color:red;font-size:14px;"><strong><i>1. 本文为作者亲自实验完成，但仅限用于学术交流使用，使用本指南造成的任何不良后果由使用者自行承担，与本博主无关，谢谢！</i></strong></p>
           <p style="color:red;font-size:14px;"><strong><i>2. 本文旨在为新手提供一个参考，请高手勿要吐槽，有暴力倾向者，请绕道，谢谢！</i></strong></p>
           <p style="color:red;font-size:14px;"><strong><i>3. Matlab比较崩溃的是，出错直接崩溃，没有提示信息，所以…</i></strong></p>
-          <p style="color:red;font-size:14px;"><strong><i>4. 3.	最后更新时间：2015年4月14日。</i></strong></p>
+          <p style="color:red;font-size:14px;"><strong><i>4. 最后更新时间：2015年4月14日。</i></strong></p>
           
-
-          <p>洋洋洒洒一大篇，就没截图了，经过几个月的使用，使用Caffe还是建议在Ubuntu系统下完成，因为不需要太多的编程，Windows版需要一定的编程基础，且因为没有官方Release版，所以更新和FixBug都麻烦一些.这里有个建议是，如果将来要做大数据集，最好事先给Linux留多点空间，比如Imagenet，估计500G都不为过。不过也可以全部使用软链接链接到Windows的NTFS磁盘，我后期实验都是使用这个方法。另外，请阅读完，至少一个部分再进行动手操作，避免多余的工作，写作能力有限，尽请见谅。</p>
-          <p>这篇安装指南，适合零基础，新手操作，请高手勿要吐槽！</p>
-          <p>简单介绍一下：Caffe，一种Convolutional Neural Network的工具包，和Alex的cuda-convnet功能类似，但各有特点。都是使用C++ CUDA进行底层编辑，Python进行实现，原作主要部署于Ubuntu，也有大神发布了Windows版，但其他相关资料较少，不适合新手使用，所以还是Ubuntu的比较适合新手。（相对而言）</p>
+          <p>简单介绍一下：SPP_net 源于微软2014年发布的论文《Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition》，主要实现基于空间金字塔的分类与检测，该方法可以大大提高目标检测的速度，相比RCNN有60倍的性能提升。</p>
           <p>本文主要包含3个部分，包括：</p>
           <ul>
               <li><strong>第一部分 运行环境</strong></li>
