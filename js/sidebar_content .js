@@ -1,6 +1,6 @@
 ﻿document.write("<div class=\"sidebar\">");
 document.write("<h3>Latest</h3>");
-document.write("<p><a href=\"Blogs\\20150413001.html\">SPP-net安装配置指南</a> <i style=\"color:gray;\">[2015-04-13]</i></p>")
+document.write("<p><a href=\"Blogs\\20150413001.html\">SPP-net + Windows 8.1 安装配置指南</a> <i style=\"color:gray;\">[2015-04-13]</i></p>")
 document.write("<p><a href=\"../Blogs\\20140719001.html\">Caffe配置指南 on Windows8.1 + CUDA6.5 + VS2013 </a> <i style=\"color:gray;\">[2014-07-19]</i></p>");
 document.write("<p><a href=\"../Blogs\\20140717001.html\">Cuda-convnet配置指南 on Windows8.1 + CUDA6.5 + VS2013</a> <i style=\"color:gray;\">[2014-07-17]</i></p>");
 document.write("<h3>Contact</h3>");
