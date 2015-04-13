@@ -29,10 +29,11 @@
           <p style="color:red;font-size:14px;"><strong><i>1. 本文为作者亲自实验完成，但仅限用于学术交流使用，使用本指南造成的任何不良后果由使用者自行承担，与本博主无关，谢谢！</i></strong></p>
           <p style="color:red;font-size:14px;"><strong><i>2. 本文旨在为新手提供一个参考，请高手勿要吐槽，有暴力倾向者，请绕道，谢谢！</i></strong></p>
           <p style="color:red;font-size:14px;"><strong><i>3. Matlab比较崩溃的是，出错直接崩溃，没有提示信息，所以…</i></strong></p>
-          <p style="color:red;font-size:14px;"><strong><i>4. 最后更新时间：2015年4月14日。</i></strong></p>
+          <p style="color:red;font-size:14px;"><strong><i>4. 有任何疑问请参考官网：https://github.com/ShaoqingRen/SPP_net , 本文涉及到的各种软件包，有可能会因为校园网、公网、墙等问题导致无法下载，请大家各显其能吧。</i></strong></p>
+          <p style="color:red;font-size:14px;"><strong><i>5. 最后更新时间：2015年4月14日。</i></strong></p>
           
-          <p>简单介绍一下：SPP_net 源于微软2014年发布的论文《Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition》，主要实现基于空间金字塔的分类与检测，该方法可以大大提高目标检测的速度，相比RCNN有60倍的性能提升。</p>
-          <p>本文主要包含3个部分，包括：</p>
+          <p>简单介绍一下：SPP_net 源于微软2014年发布的论文《Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition》，主要实现基于空间金字塔的分类与检测，该方法可以大大提高目标检测的速度，相比RCNN有60倍的性能提升。整个SPP_net配置起来还算是比较清晰，而且基于Windows的也相对容易一些，比Caffe简单。</p>
+          <p>本文主要包含三个部分：</p>
           <ul>
               <li><strong>第一部分 运行环境</strong></li>
               <li><strong>第二部分 安装步骤</strong></li>
@@ -86,10 +87,13 @@
           <img src="20150413001/001.png" />
           <p>PS: 这一步主要是根据论文中那个multi-scale feature extraction方案进行多尺度的提取特征，多尺度的目的自然是改进性能。但是对GPU要求比较高，主要是要求较大的显存，我的GTX 770 4G并不能满足所有样本需要。为了解决这个问题，我做了两个小的修改，损失一些性能（可以看出来CPU和GPU的性能差异蛮大的）：</p>
           <p class="navyBold">1) 修改默认的多尺度窗口，也就是改小点，这里没有什么理论依据，随便改的。</p>
+          <p>修改地址：D:\SPP_net-master\experiments\Script_spp_voc.m</p>
+          <p>修改地址：D:\SPP_net-master\experiments\spp_exp_cache_features_voc.m</p>
           <p class="red">%opts.spm_im_size  = [480 576 688 874 1200];</p>
           <p class="red">opts.spm_im_size  = [384 480 576 688 874];</p>
           <p class="navyBold">2) 修改从GPU切换到CPU的阈值，这个主要是根据你的GPU的情况</p>
-          <p>  if ~use_gpu || (numel(resized_im) > 1200*2400*1.2)</p>
+          <p>修改地址：D:\SPP_net-master\spp_features_convX.m</p>
+          <p class="red">  if ~use_gpu || (numel(resized_im) > 1200*2400*1.2)</p>
           <p>3) 理论上修改第二条就可以，第一条会整体降低精度，第二条只是切换GPU和CPU影响训练时间，但是测试的时候，一时也找不到一个合适的阈值，就随便设置了一个。不过根据论文，从多尺度和但尺度采样只有1%左右的性能提升，我这里只是修改了一个尺度，性能下降应该不是很明显。设备不行，也没办法！~</p>
           <p class="navyBold">(2) Finetune FC</p>
           <p class="navyBold">(3) Train SVM</p>
