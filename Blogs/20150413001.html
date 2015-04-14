@@ -96,6 +96,14 @@
           <p class="red">  if ~use_gpu || (numel(resized_im) > 1200*2400*1.2)</p>
           <p>3) 理论上修改第二条就可以，第一条会整体降低精度，第二条只是切换GPU和CPU影响训练时间，但是测试的时候，一时也找不到一个合适的阈值，就随便设置了一个。不过根据论文，从多尺度和但尺度采样只有1%左右的性能提升，我这里只是修改了一个尺度，性能下降应该不是很明显。设备不行，也没办法！~</p>
           <p class="navyBold">(2) Finetune FC</p>
+          <img src="20150413001/002.png" />
+          <p>PS：这一步比较困难的一个问题，还是设备性能的问题，微调如果同时取样的样本过多，会带来内存和硬盘的假死。所以需要修改batch-size，具体数值根据自己的机器决定，具体原因这里就不做解释了，请参考caffe官网的相关tutorial。</p>
+          <p>修改地址：D:\SPP_net-master\finetune\spp_finetune_voc.m 以及相应的prototxt文件</p>
+          <p>data_param.img_num_per_iter = 128; % should be same with the prototxt file</p>
+          <p>data_param.iter_per_batch = 50; % for load data effectively</p>
+          <p>solver_param.test_iter = 50; % better times of data_param.iter_per_batch   </p>
+          <p>solver_param.max_iter = 1000000;</p>
+
           <p class="navyBold">(3) Train SVM</p>
           <p class="navyBold">(4) BBox Regression</p>
 
