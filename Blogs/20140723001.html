@@ -41,7 +41,8 @@
           <p>本文主要包含5个部分，包括：</p>
           <ul>
               <li><strong>第一部分 Linux安装</strong></li>
-              <li><strong>第二部分 nVidia驱动和CUDA Toolkit的安装和调试</strong></li>
+              <li><strong>第二部分 nVidia驱动和CUDA Toolkit的安装和调试（*.run方法）</strong></li>
+              <li><strong>第二部分 nVidia驱动和CUDA Toolkit的安装和调试（*.deb方法，特别推荐）</strong></li>
               <li><strong>第三部分 Python安装和调试</strong></li>
               <li><strong>第四部分 Matlab安装和调试</strong></li>
               <li><strong>第五部分 Caffe的安装和测试</strong></li>
@@ -61,7 +62,7 @@
           <p class="navyBold">$ sudo update-grub</p>
           <p>该方法适用于安装双系统后，"看得到Linux，看不到Windows”的情况，反过来的话，请大家自己百度吧。</p>
 
-          <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试</h1>
+          <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试（*.run方法）</h1>
           <p>PS：这里其实可以参考nVidia 官方提供的CUDA安装手册，非常相近，32页的，不过是全英文的，我就是参考这个文档完成后面的配置和验证工作。https://developer.nvidia.com/rdp/cuda-65-rc-toolkit-download#linux。一般要输入你的用户名和密码，就是下载6.5的那个账号。 </p>
           <p class="Bold">一、Verify You Have a CUDA-Capable GPU</p>
           <p>执行下面的操作，然后验证硬件支持GPU CUDA，只要型号存在于https://developer.nvidia.com/cuda-gpus，就没问题了</p>
@@ -115,6 +116,21 @@
           <p>b. 重装CUDA Toolkit</p>
           <p class="navyBold">$ sudo sh cuda_6.5.11_rc_linux_64.run</p>
           <p>好了，到这里所有nVidia CUDA的安装就结束了，下面看看Caffe如何安装</p>
+          <br />
+
+          <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试（*.deb方法）</h1>
+          <p>PS：特别推荐*.deb的方法，目前已提供离线版的deb文件，该方法比较简单，不需要切换到tty模式。这里以CUDA 7.0为例。</p>
+          <p class="Bold">一、CUDA Repository</p>
+          <p>获取CUDA安装包,安装包请自行去NVidia官网下载。</p>
+          <p class="navyBold">$ sudo dpkg -i cuda-repo-ubuntu1410-7-0-local_7.0-28_amd64.deb</p>          
+          <p class="navyBold">$ sudo apt-get update</p>
+          <p class="Bold">二、CUDA Toolkit</p>
+          <p class="navyBold">$ sudo apt-get install -y cuda</p>
+          <p class="Bold">三、Environment Variables</p>
+          <p class="navyBold">$ export CUDA_HOME=/usr/local/cuda-7.0</p>
+          <p class="navyBold">$ export LD_LIBRARY_PATH=${CUDA_HOME}/lib64</p>
+          <p class="navyBold">$ PATH=${CUDA_HOME}/bin:${PATH}</p>
+          <p class="navyBold">$ export PATH</p>
           <br />
 
           <h1 style="color:navy;">第三部分 Python安装和调试</h1>
