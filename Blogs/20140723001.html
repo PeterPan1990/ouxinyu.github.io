@@ -143,7 +143,7 @@
           <p class="navyBold">$ sudo cp libmwservices.so /usr/local/MATLAB/R2014a/bin/glnxa64/</p>
           <p>安装完毕，程序默认启动路径：</p>
           <p class="red"> /usr/local/MATLAB/R2014a/bin/matlab </p>
-          <p class="Bold">5.创建快捷方式 </p>
+          <p class="Bold">5.创建快捷方式(已失效，无法安装ing) </p>
           <p>1. 软件中心搜索matlab </p>
           <p>2. 选择安装目录：/usr/local/MATLAB/R2014a</p>
           <p class="Bold">6.编译Matlab用到的caffe文件（见第五部分）</p>
@@ -195,11 +195,7 @@
           <p class="navyBold">$ cp Makefile.config.example Makefile.config</p>
           <p>修改新生成的Makefile.config文件，修改“BLAS := mkl”，这个非常重要。</p>
           <p>3. 配置路径，实现caffe对Python和Matlab接口的支持，编辑Makefile.config：</p>
-          <p class="red">PYTHON_INCLUDE := /usr/include/python2.7 \</p>
-          <p class="red" style="text-indent:50px;">/usr/lib/python2.7/dist-packages/numpy/core/include</p>
           <p class="red">PYTHON_LIB := /usr/local/lib</p>
-          <p class="red">INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include</p>
-          <p class="red">LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib</p>
           <p class="red">MATLAB_DIR := /usr/local/MATLAB/R2014a</p>
           <p>4. 这里非常重要的是，为了确保支持Caffe Notebook里的程序，需要使用到IDE环境，并且支持iPython接口。 </p>
           <br />
