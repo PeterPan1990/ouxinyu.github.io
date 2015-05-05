@@ -50,13 +50,13 @@
           <h1 style="color:navy;">第一部分 Linux安装</h1>
           <p>Linux的安装，如果不是Linux粉，只是必须，被迫要用它来作作科研什么的，建议安装成双系统，网上方法很多，这里我就不详细写了，安装还算是傻瓜式的，和windows的过程类似，至于语言，如果觉得难度还不够大的话，完全可以装E文版的，甚至日文，德文~~~，我是装的简体中文版，我总共用分出的500G的空间来安装Ubuntu 14.04，这个版本是最新的版本，有个好处是，可以直接访问Windows8.1的NTFS分区，不用做额外的操作，而且支持中文，例如：$ cd /media/yourname/分区名字/文件夹名，当然GUI就更方便了.</p>
           <p>我的分区设置如下：</p>
-          <p class="red">根分区： \  50G，</p>
+          <p class="red">根分区： \  100G，</p>
           <p class="red">Swap交换分区：16G ，这里，我设置和我的内存一样，据说小于16G的内存，就设置成内存的1.5-2倍</p>
           <p class="red">boot分区：200M</p>
           <p class="red">Home分区：剩余的空间，鉴于Imagenet，PASCAL VOC之类的大客户，建议500G，至少300G以上。</p>
           <p><strong> PS：解决启动分区错误</strong></p>
           <p> 基本上，重装起来，都会破坏原来的启动分区表，还原Windows分区的一个简单办法：</p>
-          <p class="navyBold">$ sudo gpedit etc/default/grub</p>
+          <p class="navyBold">$ sudo gedit etc/default/grub</p>
           <p class="red">设置：GRUB_DEFAULT = 2</p>
           <p class="navyBold">$ sudo update-grub</p>
           <p>该方法适用于安装双系统后，"看得到Linux，看不到Windows”的情况，反过来的话，请大家自己百度吧。</p>
@@ -171,9 +171,9 @@
           <p class="Bold">三、安装OpenCV 2.4.10</p>
           <p>1. 下载<a href="https://github.com/jayrambhia/Install-OpenCV" target="_blank">Install-OpenCV-master</a>（也可以下载官网原版OpenCV：http://opencv.org/，自己编译） ，该集成包中的opencv2.4.8于近期被删除，如果想要下载最新的OpenCV 2.4.10可以下载我修改过的Install-OpenCV-master，百度网盘分享地址：http://pan.baidu.com/s/1eQ9xy8q (不保证长期有效) </p>
           <p>2. 切换到文件保存的文件夹，然后安装依赖项：</p>
-          <p class="navyBold">$ sudo ./dependencies.sh</p>
+          <p class="navyBold">$ sudo sh Ubuntu/dependencies.sh</p>
           <p>3. 切换目录Ubuntu\2.4\安装openCV 2.4.10：</p>
-          <p class="navyBold">$ sudo sh ./opencv2_4_10.sh</p>
+          <p class="navyBold">$ sudo sh Ubuntu/2.4/opencv2_4_10.sh</p>
           <p>保证网络畅通，因为软件需要联网这里时间较长，请耐心等待。。。，所以就安</p>
           <p class="Bold">四、安装其他依赖项</p>
           <p>1. Google Logging Library（glog），下载地址：https://code.google.com/p/google-glog/，然后解压安装： </p>
@@ -213,7 +213,7 @@
           <p class="navyBold">$ sudo cp libcudnn.so.6.5 /usr/local/lib</p>
           <p class="navyBold">$ sudo cp libcudnn.so.6.5.18 /usr/local/lib</p>
           <p>c. 链接cuDNN的库文件</p>
-          <p class="navyBold">$ sudo ln -sf /usr/local/lib/cudnn.so.6.5.18 /usr/local/lib/libcudnn.so.6.5</p>
+          <p class="navyBold">$ sudo ln -sf /usr/local/lib/libcudnn.so.6.5.18 /usr/local/lib/libcudnn.so.6.5</p>
           <p class="navyBold">$ sudo ldconfig -v</p>
 
           <p>6. 编译caffe-master！！！"-j8"是使用CPU的多核进行编译，可以极大地加速编译的速度，建议使用。</p>
