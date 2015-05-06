@@ -65,7 +65,7 @@
           <p>该方法适用于安装双系统后，"看得到Linux，看不到Windows”的情况，反过来的话，请大家自己百度吧。</p>
           <p><strong> PS：关于我的笔记本的特例，仅供类似设备的参考</strong></p>
           <p>笔记本配置：技嘉P35X v3，i7-4720HQ@2.6G/16G/NVidia GTX 980 4G/Intel HD 4600/128G SSD*2 + 2T SATA *2</p>
-          <p>我的两组硬盘SSD和SATA分别做Raid 0，目的是合并逻辑分区，没有考虑冗余备份问题，最后的状态是2个逻辑硬盘块256G SSD + 4T SATA，用的GPA分区，最后导致利用Ubuntu的GRUB启动界面找不到Windows分区。所以上面的方法失效。不过，可以通过笔记本的F12和Bios设置来实现启动分区的选择，并且我用Linux的机会很少，所以也就如此处理了，Linux高手可以自己折腾一下Grub启动。</p>
+          <p>我的两组硬盘SSD和SATA分别做Raid 0，目的是合并逻辑分区，没有考虑冗余备份问题，最后的状态是2个逻辑硬盘块256G SSD + 4T SATA，用的GPA分区，最后导致利用Ubuntu的GRUB启动界面找不到Windows分区。所以上面的方法失效。不过，可以通过笔记本的F12和Bios设置来实现启动分区的选择，并且我用Linux的机会很少，所以也就如此处理了，Linux高手可以自己折腾一下Grub启动。Ubuntu 15.04安装与SATA逻辑分区，SSD分区安装Windows8.1。</p>
           <br />
 
           <p style="color:blue;font-size:14px;"><strong>第二部分两种安装方法，任选其一即可，推荐第二种方法。</strong></p>
@@ -191,12 +191,12 @@
           <p class="red">/lib</p>
           <p>3. 完成lib文件的链接操作，执行：</p>
           <p class="navyBold">$ sudo ldconfig -v</p>
-          <p class="Bold">三、安装OpenCV 2.4.10</p>
-          <p>1. 下载<a href="https://github.com/jayrambhia/Install-OpenCV" target="_blank">Install-OpenCV-master</a>（也可以下载官网原版OpenCV：http://opencv.org/，自己编译） ，该集成包中的opencv2.4.8于近期被删除，如果想要下载最新的OpenCV 2.4.10可以下载我修改过的Install-OpenCV-master，百度网盘分享地址：http://pan.baidu.com/s/1eQ9xy8q (不保证长期有效) </p>
+          <p class="Bold">三、安装OpenCV 3.0.0</p>
+          <p>1. 下载并编译OpenCV（官网原版OpenCV：http://opencv.org/）， 或者使用本站提供的修改版的安装包<a href="https://github.com/ouxinyu/Install-OpenCV-master" target="_blank">Install-OpenCV-master</a>（下面的安装方式使用该包完成，安装包修改了dependencies.sh文件并增加了OpenCV 3.0.0的安装文件，同时保留了原来的2.3x和2.4x版） </p>
           <p>2. 切换到文件保存的文件夹，然后安装依赖项：</p>
           <p class="navyBold">$ sudo sh Ubuntu/dependencies.sh</p>
-          <p>3. 切换目录Ubuntu\2.4\安装openCV 2.4.10：</p>
-          <p class="navyBold">$ sudo sh Ubuntu/2.4/opencv2_4_10.sh</p>
+          <p>3. 切换目录Ubuntu\3.0\安装OpenCV 3.0.0rc1：</p>
+          <p class="navyBold">$ sudo sh opencv3_0_0-rc1.sh</p>
           <p>保证网络畅通，因为软件需要联网这里时间较长，请耐心等待。。。，所以就安</p>
           <p class="Bold">四、安装其他依赖项</p>
           <p>1. Google Logging Library（glog），下载地址：https://code.google.com/p/google-glog/，然后解压安装： </p>
@@ -206,34 +206,56 @@
           <p class="navyBold">$ sudo make install</p>
           <p class="red">如果没有权限就chmod a+x glog-0.3.3 -R , 或者索性 chmod 777 glog-0.3.3 -R , 装完之后，这个文件夹就可以kill了。</p>
           <p>2. 其他依赖项，确保都成功</p>
-          <p class="navyBold">$ sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev</p>
-          <p class="navyBold">$ sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler</p>
+          <p class="navyBold">$ sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev</p>
+          <p class="navyBold">$ sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler</p>
 
           <p class="Bold">五、安装Caffe并测试</p>
           <p>1. 安装pycaffe必须的一些依赖项：</p>
-          <p class="navyBold">$ sudo apt-get install python-numpy python-scipy python-matplotlib python-sklearn python-skimage python-h5py python-protobuf python-leveldb python-networkx python-nose python-pandas python-gflags Cython ipython</p>
-          <p class="navyBold">$ sudo apt-get install protobuf-c-compiler protobuf-compiler</p>
+          <p class="navyBold">$ sudo apt-get install -y python-numpy python-scipy python-matplotlib python-sklearn python-skimage python-h5py python-protobuf python-leveldb python-networkx python-nose python-pandas python-gflags Cython ipython</p>
+          <p class="navyBold">$ sudo apt-get install -y protobuf-c-compiler protobuf-compiler</p>
 
-          <p>2. 切换到Caffe的下载文件夹，然后执行：</p>
-          <p class="navyBold">$ cp Makefile.config.example Makefile.config</p>
-          <p>修改新生成的Makefile.config文件，修改“BLAS := mkl”，这个非常重要。</p>
-          <p>3. 配置路径，实现caffe对Python和Matlab接口的支持，编辑Makefile.config：</p>
-          <p class="red">PYTHON_LIB := /usr/local/lib</p>
-          <p class="red">MATLAB_DIR := /usr/local/MATLAB/R2014a</p>
-          <p>4. 这里非常重要的是，为了确保支持Caffe Notebook里的程序，需要使用到IDE环境，并且支持iPython接口。 </p>
-          <br />
-
-          <p>5. 安装配置nVidia cuDNN 加速Caffe模型运算</p>
-          <p>a. 编辑确保Makefile.config,启用GPU “# CPU_ONLY := 1”,并设置 “USE_CUDNN := 1”。</p>
-          <p>b. 安装cuDNN</strong></p>
-          <p>cuDNN 介绍和下载地址：<a href="http://devblogs.nvidia.com/parallelforall/accelerate-machine-learning-cudnn-deep-neural-network-library/" target="_blank" />cuDNN Introdution and Download</a>（下载在最下面，需要注册）</p>
+          <p>2. 安装配置nVidia cuDNN 加速Caffe模型运算</p>
+          <p>a. 安装cuDNN</p>
+          <p>目前caffe-master原生只默认支持cudnn-6.5-linux-R1.tgz</p>
           <p class="navyBold">$ sudo cp cudnn.h /usr/local/include</p>
           <p class="navyBold">$ sudo cp libcudnn.so /usr/local/lib</p>
           <p class="navyBold">$ sudo cp libcudnn.so.6.5 /usr/local/lib</p>
           <p class="navyBold">$ sudo cp libcudnn.so.6.5.18 /usr/local/lib</p>
-          <p>c. 链接cuDNN的库文件</p>
+          <p>b. 链接cuDNN的库文件</p>
           <p class="navyBold">$ sudo ln -sf /usr/local/lib/libcudnn.so.6.5.18 /usr/local/lib/libcudnn.so.6.5</p>
+          <p class="navyBold">$ sudo ln -sf /usr/local/lib/libcudnn.so.6.5 /usr/local/lib/libcudnn.so</p>
           <p class="navyBold">$ sudo ldconfig -v</p>
+
+          <p>3. 切换到Caffe的下载文件夹，生成Makefile.config配置文件，执行：</p>
+          <p class="navyBold">$ cp Makefile.config.example Makefile.config</p>
+
+          <p>4. 配置Makefile.config文件（仅列出修改部分）</p>
+          <p>a. 启用CUDNN，去掉"#"（目前caffe-master仍然只支持R1版本）</p>
+          <p class="red">USE_CUDNN ：= 1</p>
+
+          <p>b. 启用GPU，去掉"#"</p>
+          <p class="red">CPU_ONLY := 1</p>
+
+          <p>c. 实现GTX 980/980M/970/970M的支持（笔者使用GTX980M，其他显卡请保持不变，部分低端显卡需要注释一些CUDA_ARCH，请自行设置）</p>
+          <p class="red">CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \</p>
+          <p class="red">-gencode arch=compute_20,code=sm_21 \</p>
+          <p class="red">-gencode arch=compute_30,code=sm_30 \</p>
+          <p class="red">-gencode arch=compute_35,code=sm_35 \</p>
+          <p class="red">-gencode arch=compute_50,code=sm_50 \</p>
+          <p class="red">-gencode arch=compute_52,code=sm_52 \</p>
+          <p class="red">-gencode arch=compute_52,code=compute_52</p>
+          <p>主要修改最后两行</p>
+
+          <p>d. 启用Intel Parallel Studio XE 2015 Professional Edition for C++ Linux</p>
+          <p class="red">BLAS := mkl</p>
+
+          <p>e. 配置路径，实现caffe对Python和Matlab接口的支持</p>
+          <p class="red">PYTHON_LIB := /usr/local/lib</p>
+          <p class="red">MATLAB_DIR := /usr/local/MATLAB/R2014a</p>
+
+          <p>5. 配置Makefile文件（实现对OpenCV 3.x的支持）</p>
+          <p>查找“Derive include and lib directories”一节，修改“LIBRARIES +=”的最后一行，增加opencv_imgcodecs</p>
+          <p class="red">opencv_core opencv_highgui opencv_imgproc pthread opencv_imgcodecs</p>
 
           <p>6. 编译caffe-master！！！"-j8"是使用CPU的多核进行编译，可以极大地加速编译的速度，建议使用。</p>
           <p class="navyBold">$ make all -j8</p>
@@ -244,35 +266,38 @@
           <p class="navyBold">$ make pycaffe -j8</p>
           <p class="navyBold">$ make matcaffe -j8</p>
 
-
           <p class="Bold">六、使用MNIST数据集进行测试</p>
           <p>Caffe默认情况会安装在$CAFFE_ROOT，就是解压到那个目录，例如：$ home/username/caffe-master，所以下面的工作，默认已经切换到了该工作目录。下面的工作主要是，用于测试Caffe是否工作正常，不做详细评估。具体设置请参考官网：http://caffe.berkeleyvision.org/gathered/examples/mnist.html </p>
           <p>1. 数据预处理</p>
           <p class="navyBold">$ sh data/mnist/get_mnist.sh</p>
-          <p>2. 重建lmdb/leveldb文件。Caffe支持三种数据格式输入网络，包括Image(.jpg, .png等)，leveldb，lmdb，根据自己需要选择不同输入吧。</p>
+          <p>2. 重建lmdb文件。Caffe支持三种数据格式输入网络，包括Image(.jpg, .png等)，leveldb，lmdb，根据自己需要选择不同输入吧。</p>
           <p class="navyBold">$ sh examples/mnist/create_mnist.sh</p>
           <p>生成mnist-train-lmdb 和 mnist-train-lmdb文件夹，这里包含了lmdb格式的数据集</p>
-
 
           <p>3. 训练mnist</p>
           <p class="navyBold">$ sh examples/mnist/train_lenet.sh</p>
           <p>至此，Caffe安装的所有步骤完结，下面是一组简单的数据对比，实验来源于MNIST数据集，主要是考察一下不同系统下CPU和GPU的性能。可以看到明显的差别了，虽然MNIST数据集很简单，相信复杂得数据集，差别会更大，Ubuntu+GPU是唯一的选择了。</p>
-          <p class="red">测试平台：i7-4770K/16G/GTX 770/CUDA 6.5</p>
+          <p class="red">测试平台1：i7-4770K/16G/GTX 770/CUDA 6.5</p>
           <p class="red">MNIST Windows8.1 on CPU：620s</p>
           <p class="red">MNIST Windows8.1 on GPU：190s</p>
           <p class="red">MNIST Ubuntu 14.04 on CPU：270s </p>
           <p class="red">MNIST Ubuntu 14.04 on GPU：160s</p>
-          <p class="red">MNIST Ubuntu 14.04 on GPU with cuDNN：32s</p>
+          <p class="red">MNIST Ubuntu 14.04 on GPU with cuDNN：30s</p>
           <p class="red">Cifar10_full on GPU wihtout cuDNN：73m45s = 4428s　<i>（Iteration 70000）</i></p>
           <p class="red">Cifar10_full on GPU with cuDNN：20m7s = 1207s　<i>（Iteration 70000）</i></p>
           <br />
+          
+          <p class="red">测试平台2：技嘉P35X v3，i7-4720HQ@2.6G/16G/NVidia GTX 980 4G</p>
+          <p class="red">MNIST Ubuntu 15.04 on GPU with cuDNN：36s</p>
+          <br />
+
           <p class="red">对比测试1：2*E5-2620(12CPUs)/128G/Tesla K20M/CUDA5.5/CentOS 6.4</p>
           <p class="red">MNIST CentOS 6.4 on GPU：294s</p>
           <p class="red">对比测试2：Tesla K40M/CUDA6.5/ubuntu 14.04</p>
           <p class="red">MNIST on GPU with cuDNN：30s</p>
           <p class="red">对比测试3：GTX 660/CUDA6.5/ubuntu 14.04</p>
           <p class="red">MNIST on GPU with cuDNN：49s</p>
-          <p>对比试验1是一个不太公平的测试，毕竟性能差很大，很可能不单单是由Tesla K20s 和GTX 770带来的，也可能是因为CentOS或者是CUDA5.5的影响，但总体上的结论和Caffe官网的<a href="http://caffe.berkeleyvision.org/performance_hardware.html" target="_blank"> reference performance numbers</a> 一致，对于普通用户：GTX的性价比高很多。对比试验2展现了Tesla K40的强大性能，相信对于复杂图像，它应该有更强劲的表现。（感谢香港城市大学 Ph.D Jingjing、南京理工大学 Ph.D JinLu、华中科技大学 MS LiuMaolin 提供的测试环境和测试数据。）</p>
+          <p>对比试验1是一个不太公平的测试，毕竟性能差很大，很可能不单单是由Tesla K20s 和GTX 770带来的，也可能是因为CentOS或者是CUDA5.5(without cuDNN)的影响，但总体上的结论和Caffe官网的<a href="http://caffe.berkeleyvision.org/performance_hardware.html" target="_blank"> reference performance numbers</a> 一致，对于普通用户：GTX的性价比高很多。对比试验2展现了Tesla K40的强大性能，相信对于复杂图像，它应该有更强劲的表现。（感谢香港城市大学 Ph.D Jingjing、南京理工大学 Ph.D JinLu、华中科技大学 MS LiuMaolin 提供的测试环境和测试数据。）</p>
           <br />
 
 
