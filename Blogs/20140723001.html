@@ -33,7 +33,7 @@
           <p style="color:red;font-size:14px;"><strong><i>2. 本文旨在为新手提供一个参考，请高手勿要吐槽，有暴力倾向者，请绕道，谢谢！</i></strong></p>
           <p style="color:red;font-size:14px;"><strong><i>3. 本文使用2015年5月5日下载的caffe-master版本，运行平台包括Ubuntu 15.04，CUDA7.0，cuDNN R1，OpenCV 3.0.0rc1。</i></strong></p>
           <p style="color:red;font-size:14px;"><strong><i>4. 安装过程，因为平台不同、设备不同、操作者不同，会遇到各种奇怪的问题和报错信息，请善用Caffe官网的Issues和caffe-user论坛,以及Google和Baidu，这些地方能解决的问题，远比张口问来得直接、高效。</i></strong></p>
-          <p style="color:red;font-size:14px;"><strong><i>5. 最后更新时间：2015年5月6日。本次更新主要是在新版本的软件进行部署，保留了原来14.04下安装的部分步骤。</i></strong></p>
+          <p style="color:red;font-size:14px;"><strong><i>5. 最后更新时间：2015年5月6日。本次更新主要是在新版本的软件进行部署，并修正了过去的一些bug，保留了原来14.04下安装的部分步骤。</i></strong></p>
 
 
           <p>洋洋洒洒一大篇，就没截图了，经过几个月的使用，使用Caffe还是建议在Ubuntu系统下完成，因为不需要太多的编程，Windows版需要一定的编程基础，且因为没有官方Release版，所以更新和FixBug都麻烦一些.这里有个建议是，如果将来要做大数据集，最好事先给Linux留多点空间，比如Imagenet，估计500G都不为过。不过也可以全部使用软链接链接到Windows的NTFS磁盘，我后期实验都是使用这个方法。另外，请阅读完，至少一个部分再进行动手操作，避免多余的工作，写作能力有限，尽请见谅。</p>
@@ -165,8 +165,8 @@
           <p>拷贝 libmwservices.so 至 /usr/local/MATLAB/R2014a/bin/glnxa64</p>
           <p class="navyBold">$ sudo cp libmwservices.so /usr/local/MATLAB/R2014a/bin/glnxa64/</p>
           <p>安装完毕，程序默认启动路径：</p>
-          <p class="red"> /usr/local/MATLAB/R2014a/bin/matlab </p>
-          <p class="Bold">5.创建快捷方式(已失效，无法安装ing) </p>
+          <p class="navyBold">$ sh /usr/local/MATLAB/R2014a/bin/matlab </p>
+          <p class="Bold">5.创建快捷方式(已失效，可以自己创建符号链接到任意位置当快捷方式) </p>
           <p>1. 软件中心搜索matlab </p>
           <p>2. 选择安装目录：/usr/local/MATLAB/R2014a</p>
           <p class="Bold">6.编译Matlab用到的caffe文件（见第五部分）</p>
@@ -177,8 +177,8 @@
           <p class="Bold">一、安装BLAS</p>
           <p>这里可以选择（ATLAS，MKL或者OpenBLAS），我这里使用MKL，首先下载并安装英特尔® 数学内核库 Linux* 版MKL，下载链接是：https://software.intel.com/en-us/intel-education-offerings， 请下载Student版，先申请，然后会立马收到一个邮件（里面有安装序列号），打开照着下载就行了。下载完之后，要把文件解压到home文件夹(或直接把tar.gz文件拷贝到home文件夹,为了节省空间，安装完记得把压缩文件给删除喔～)，或者其他的ext4的文件系统中。 </p>
           <p>接下来是安装过程，先授权，然后安装：</p>
-          <p class="navyBold">$ tar zxvf cpp_studio_xe_2013_sp1_update3.tar.gz  （如果你是直接拷贝压缩文件过来的）</p>
-          <p class="navyBold">$ chmod a+x /home/username/cpp_studio_xe_2013_sp1_update3 -R</p>
+          <p class="navyBold">$ tar zxvf parallel_studio_xe_2015.tar.gz  （如果你是直接拷贝压缩文件过来的）</p>
+          <p class="navyBold">$ chmod a+x parallel_studio_xe_2015 -R</p>
           <p class="navyBold">$ sudo ./install_GUI.sh</p>
           <p class="Bold">二、MKL与CUDA的环境设置</p>
           <p>1. 新建intel_mkl.conf， 并编辑之：</p>
