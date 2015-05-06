@@ -27,13 +27,13 @@
           <p style="text-align:right;"><a href="../Blog.html">返回</a></p>
           <p style="color:blue;font-size:14px;"><strong>特别感谢在学习和使用Caffe和CNN的过程中，超级大神Yanqing Jia, Eric Tzeng, Evan Shelhamer, Ross Girshick, Sergey Karayev, Sergio Gadarrama给予的帮助。</strong></p>
 
-          <p style="color:red;font-size:14px;">特别说明：</i></strong></p>
-          <p style="color:red;font-size:14px;">0. Caffe 官网地址：http://caffe.berkeleyvision.org/ </i></strong></p>
-          <p style="color:red;font-size:14px;">1. 本文为作者亲自实验完成，但仅限用于学术交流使用，使用本指南造成的任何不良后果由使用者自行承担，与本文作者无关，谢谢！为保证及时更新，转载请标明出处，谢谢！</i></strong></p>
-          <p style="color:red;font-size:14px;">2. 本文旨在为新手提供一个参考，请高手勿要吐槽，有暴力倾向者，请绕道，谢谢！</i></strong></p>
-          <p style="color:red;font-size:14px;">3. 本文使用2015年5月5日下载的caffe-master版本，运行平台为：Ubuntu 15.04，CUDA7.0，cuDNN v2(以前一直是cuDNN R1)，OpenCV 3.0.0rc1。</i></strong></p>
-          <p style="color:red;font-size:14px;">4. 安装过程，因为平台不同、设备不同、操作者不同，会遇到各种奇怪的问题和报错信息，请善用Caffe官网的Issues和caffe-user论坛,以及Google和Baidu。参考本指南，请下载最新版caffe-master，新版本很多文件已经变更。</i></strong></p>
-          <p style="color:red;font-size:14px;">5. 最后更新时间：2015年5月6日。本次更新主要是在新版本的软件进行部署，并修正了过去的一些bug，保留了原来14.04下安装的部分步骤。</i></strong></p>
+          <p style="color:red;font-size:14px;">特别说明：</p>
+          <p style="color:red;font-size:14px;">0. Caffe 官网地址：http://caffe.berkeleyvision.org/ </p>
+          <p style="color:red;font-size:14px;">1. 本文为作者亲自实验完成，但仅限用于学术交流使用，使用本指南造成的任何不良后果由使用者自行承担，与本文作者无关，谢谢！为保证及时更新，转载请标明出处，谢谢！</p>
+          <p style="color:red;font-size:14px;">2. 本文旨在为新手提供一个参考，请高手勿要吐槽，有暴力倾向者，请绕道，谢谢！</p>
+          <p style="color:red;font-size:14px;">3. 本文使用2015年5月5日下载的caffe-master版本，运行平台为：Ubuntu 15.04，CUDA7.0，cuDNN v2(以前一直是cuDNN R1)，OpenCV 3.0.0rc1。</p>
+          <p style="color:red;font-size:14px;">4. 安装过程，因为平台不同、设备不同、操作者不同，会遇到各种奇怪的问题和报错信息，请善用Caffe官网的Issues和caffe-user论坛,以及Google和Baidu。参考本指南，请下载最新版caffe-master，新版本很多文件已经变更。</p>
+          <p style="color:red;font-size:14px;">5. 最后更新时间：2015年5月6日。本次更新主要是在新版本的软件进行部署，并修正了过去的一些bug，保留了原来14.04下安装的部分步骤。</p>
 
 
           <p>洋洋洒洒一大篇，就没截图了，经过几个月的使用，使用Caffe还是建议在Ubuntu系统下完成，因为不需要太多的编程，Windows版需要一定的编程基础，且因为没有官方Release版，所以更新和FixBug都麻烦一些.这里有个建议是，如果将来要做大数据集，最好事先给Linux留多点空间，比如Imagenet，估计500G都不为过。不过也可以全部使用软链接链接到Windows的NTFS磁盘，我后期实验都是使用这个方法。另外，请阅读完，至少一个部分再进行动手操作，避免多余的工作，写作能力有限，尽请见谅。</p>
@@ -192,7 +192,7 @@
           <p>3. 完成lib文件的链接操作，执行：</p>
           <p class="navyBold">$ sudo ldconfig -v</p>
           <p class="Bold">三、安装OpenCV 3.0.0</p>
-          <p>1. 下载并编译OpenCV（官网原版OpenCV：http://opencv.org/）， 或者使用本站提供的修改版的安装包<a href="https://github.com/ouxinyu/Install-OpenCV-master" target="_blank">Install-OpenCV-master</a>（下面的安装方式使用该包完成，安装包修改了dependencies.sh文件并增加了OpenCV 3.0.0的安装文件，同时保留了原来的2.3x和2.4x版） </p>
+          <p>1. 下载并编译OpenCV（官网原版OpenCV：http://opencv.org/）， 或者使用本站提供的修改版的安装包<a href="https://github.com/ouxinyu/Install-OpenCV-master" target="_blank"> Install-OpenCV-master </a>（下面的安装方式使用该包完成，安装包修改了dependencies.sh文件并增加了OpenCV 3.0.0的安装文件，同时保留了原来的2.3x和2.4x版） </p>
           <p>2. 切换到文件保存的文件夹，然后安装依赖项：</p>
           <p class="navyBold">$ sudo sh Ubuntu/dependencies.sh</p>
           <p>3. 切换目录Ubuntu\3.0\安装OpenCV 3.0.0rc1：</p>
