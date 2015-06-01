@@ -43,8 +43,8 @@
           <p>本文主要包含5个部分，包括：</p>
           <ul>
               <li><strong>第一部分 Linux安装</strong></li>
-              <li><strong>第二部分 nVidia驱动和CUDA Toolkit的安装和调试（*.run方法）</strong></li>
               <li><strong>第二部分 nVidia驱动和CUDA Toolkit的安装和调试（*.deb方法，特别推荐）</strong></li>
+              <li><strong>第二部分 nVidia驱动和CUDA Toolkit的安装和调试（*.run方法）</strong></li>
               <li><strong>第三部分 Python安装和调试</strong></li>
               <li><strong>第四部分 Matlab安装和调试</strong></li>
               <li><strong>第五部分 Caffe的安装和测试</strong></li>
@@ -69,6 +69,21 @@
           <br />
 
           <p style="color:blue;font-size:14px;"><strong>第二部分两种安装方法，任选其一即可，推荐第二种方法(*.deb方法)。</strong></p>
+          <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试（*.deb方法）</h1>
+          <p>PS：特别推荐*.deb的方法，目前已提供离线版的deb文件，该方法比较简单，不需要切换到tty模式。这里以CUDA 7.0为例。</p>
+          <p class="Bold">一、CUDA Repository</p>
+          <p>获取CUDA安装包,安装包请自行去NVidia官网下载。</p>
+          <p class="navyBold">$ sudo dpkg -i cuda-repo-ubuntu1410-7-0-local_7.0-28_amd64.deb</p>
+          <p class="navyBold">$ sudo apt-get update</p>
+          <p class="Bold">二、CUDA Toolkit</p>
+          <p class="navyBold">$ sudo apt-get install -y cuda</p>
+          <p class="Bold">三、Environment Variables</p>
+          <p class="navyBold">$ export CUDA_HOME=/usr/local/cuda-7.0</p>
+          <p class="navyBold">$ export LD_LIBRARY_PATH=${CUDA_HOME}/lib64</p>
+          <p class="navyBold">$ PATH=${CUDA_HOME}/bin:${PATH}</p>
+          <p class="navyBold">$ export PATH</p>
+          <br />
+
           <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试（*.run方法）</h1>
           <p>PS：这里其实可以参考nVidia 官方提供的CUDA安装手册，非常相近，32页的，不过是全英文的，我就是参考这个文档完成后面的配置和验证工作。https://developer.nvidia.com/rdp/cuda-65-rc-toolkit-download#linux。一般要输入你的用户名和密码，就是下载6.5的那个账号。 </p>
           <p class="Bold">一、Verify You Have a CUDA-Capable GPU</p>
@@ -125,21 +140,6 @@
           <p>好了，到这里所有nVidia CUDA的安装就结束了，下面看看Caffe如何安装</p>
           <br />
 
-          <h1 style="color:navy;">第二部分：nVidia驱动和CUDA Toolkit的安装和调试（*.deb方法）</h1>
-          <p>PS：特别推荐*.deb的方法，目前已提供离线版的deb文件，该方法比较简单，不需要切换到tty模式。这里以CUDA 7.0为例。</p>
-          <p class="Bold">一、CUDA Repository</p>
-          <p>获取CUDA安装包,安装包请自行去NVidia官网下载。</p>
-          <p class="navyBold">$ sudo dpkg -i cuda-repo-ubuntu1410-7-0-local_7.0-28_amd64.deb</p>
-          <p class="navyBold">$ sudo apt-get update</p>
-          <p class="Bold">二、CUDA Toolkit</p>
-          <p class="navyBold">$ sudo apt-get install -y cuda</p>
-          <p class="Bold">三、Environment Variables</p>
-          <p class="navyBold">$ export CUDA_HOME=/usr/local/cuda-7.0</p>
-          <p class="navyBold">$ export LD_LIBRARY_PATH=${CUDA_HOME}/lib64</p>
-          <p class="navyBold">$ PATH=${CUDA_HOME}/bin:${PATH}</p>
-          <p class="navyBold">$ export PATH</p>
-          <br />
-
           <h1 style="color:navy;">第三部分 Python安装和调试</h1>
           <p class="Bold">1. 安装IDE运行环境</p>
           <p>选择一个适合你的IDE运行环境，我是用的是Spyder，因为它内置了 iPython 环境，Caffe有不少的程序是基于 iPython 环境完成的。安装方法很简单，直接在Ubuntu软件中心搜索“spyder”即可安装。</p>
@@ -166,9 +166,24 @@
           <p class="navyBold">$ sudo cp libmwservices.so /usr/local/MATLAB/R2014a/bin/glnxa64/</p>
           <p>安装完毕，程序默认启动路径：</p>
           <p class="navyBold">$ sh /usr/local/MATLAB/R2014a/bin/matlab </p>
-          <p class="Bold">5.创建快捷方式(已失效，可以自己创建符号链接到任意位置当快捷方式) </p>
-          <p>1. 软件中心搜索matlab </p>
-          <p>2. 选择安装目录：/usr/local/MATLAB/R2014a</p>
+          <p class="Bold">5.解决编译器gcc/g++版本问题。（这里因为折腾了一会，所以只做参考，基本流程就2步，有问题，大家可以自己尝试。） </p>
+          <p class="red">因为Ubuntu 15.04的gcc/g++版本是4.9.2，而Matlab 2014a（2015a）的版本是4.7.x所以在使用matla调用mex文件的时候，基本上都会报错，根据报错信息，考虑如下两步解决方案。<p>
+          <p class="Bold">1. 降级安装gcc/g++版本为4.7.x </p>
+          <p>(1). 下载gcc/g++ 4.7.x</p>
+          <p class="navyBold">$ sudo apt-get install -y gcc-4.7</p>
+          <p class="navyBold">$ sudo apt-get install -y g++-4.7</p>
+          <p>(2). 链接gcc/g++实现降级</p>
+          <p class="navyBold">$ cd /usr/bin</p>
+          <p class="navyBold">$ sudo rm gcc</p>
+          <p class="navyBold">$ sudo ln -s gcc-4.7 gcc</p>
+          <p class="navyBold">$ sudo rm g++</p>
+          <p class="navyBold">$ sudo ln -s g++-4.7 g++</p>
+          <p class="Bold">2. 暴力引用新版本GLIBCXX_3.4.20</p>
+          <p class="navyBold">$ sudo cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.20 /usr/local/MATLAB/R2014a/sys/os/glnxa64/libstdc++.so.6.0.20</p>
+          <p class="navyBold">$ sudo mv libstdc++.so.6 libstdc++.so.6.backup</p>
+          <p class="navyBold">$ sudo ln -s libstdc++.so.6.0.20 libstdc++.so.6</p>
+          <p class="navyBold">$ sudo ldconfig -v</p>
+          <p> 通过命令“strings /usr/local/MATLAB/R2014a/sys/os/glnxa64/libstdc++.so.6 | grep GLIBCXX_” 可以看一下，是否已经成功包含了GLIBCXX_3.4.20，如果已经存在，基本上就成功了。 </p>
           <p class="Bold">6.编译Matlab用到的caffe文件（见第五部分）</p>
 
 
