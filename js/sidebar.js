@@ -17,5 +17,6 @@ document.write("<h3>My Links</h3>");
 document.write("<ul>");
 document.write("<li><a href=\"http://www.scholarmate.com/profile/xinyuou1 \" target=\"_blank\"> ScholarMate</a></li>");
 document.write("<li><a href=\"PrimarySchool/home.html\" target=\"_blank\"> 明通小学杨老师班</a></li>");
+document.write("<li><a href=\"http://nbviewer.ipython.org/github/ouxinyu/ouxinyu.github.io/blob/master/MyCodes/Default.ipynb \" target=\"_blank\"> 明通小学杨老师班</a></li>");
 document.write("</ul>");
 document.write("</div>");
